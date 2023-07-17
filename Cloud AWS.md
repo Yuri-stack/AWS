@@ -14,14 +14,14 @@ Temos aqui alguns serviços tais como:
 
 ## Computação
 
-- **EC2** - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**)
+- **EC2** - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) ** principal produto
 - **Amazon EC2 Auto Scaling** - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. 
 - **AWS Elastic Beanstalk** - é um serviço que de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
 - **Aws Lambda** - permite executar código sem a necessidade de provisional ou gerenciar servidores, é como um assistente que executa pequenos trechos de código (funções) em resposta a eventos específicos. ( exemplo de eventos: solicitação http, upload de um arquivo no bucket ou alteração em um banco de dados) (**PaaS**)
 
 ### Redes e entrega de conteúdo
 
-- **Amazon VPC** - serviço que permite criar rede privada virtual na nuvem e até mesmo sub-redes com tabelas de roteamento e regras de firewall. Essa rede é isolada do resto da internet e de outras redes da AWS. (**IaaS**)
+- **Amazon VPC** - serviço que permite criar rede privada virtual na nuvem e até mesmo sub-redes com tabelas de roteamento e regras de firewall. Essa rede é isolada do resto da internet e de outras redes da AWS. (**IaaS**) ** principal produto
 - **Amazon Route 53** - serviço de DNS fornecido pela AWS que permite conectar nomes de domínio a recursos na internet.  Também oferece outros recursos úteis, como o registro de recursos de  saúde dos servidores, para garantir a alta disponibilidade dos recursos  da web, e o balanceamento de carga, que distribui o tráfego entre vários servidores para melhorar o desempenho. (**SaaS**)
 - Amazon CloudFront - 
 - Elastic Load Balancing
@@ -38,12 +38,12 @@ Temos aqui alguns serviços tais como:
 
 ### Banco de dados
 
-- Amazon RDS
+- Amazon RDS * * principal produto
 - Amazon DynamoDB
 
 ### Segurança, identidade e compliance:
 
-- AWS Identity & Access Management
+- AWS Identity & Access Management - **principal produto
 - AWS WAF
 - AWS Shield
 - AWS Artifact
@@ -56,7 +56,7 @@ Temos aqui alguns serviços tais como:
 
 ### Armazenamentos:
 
-- Amazon S3
+- Amazon S3 - ** produto principal
 - Amazon EBS
 - S3 Glacier
 - Família Snow
