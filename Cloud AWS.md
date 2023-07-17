@@ -19,14 +19,14 @@ Temos aqui alguns serviços tais como:
 - **AWS Elastic Beanstalk** - é um serviço que de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
 - **Aws Lambda** - permite executar código sem a necessidade de provisional ou gerenciar servidores, é como um assistente que executa pequenos trechos de código (funções) em resposta a eventos específicos. ( exemplo de eventos: solicitação http, upload de um arquivo no bucket ou alteração em um banco de dados) (**PaaS**)
 
-Redes e entrega de conteúdo:
+### Redes e entrega de conteúdo
 
 - **Amazon VPC** - serviço que permite criar rede privada virtual na nuvem e até mesmo sub-redes com tabelas de roteamento e regras de firewall. Essa rede é isolada do resto da internet e de outras redes da AWS. (**IaaS**)
-- Amazon Route 53
-- Amazon CloudFront
+- **Amazon Route 53** - serviço de DNS fornecido pela AWS que permite conectar nomes de domínio a recursos na internet.  Também oferece outros recursos úteis, como o registro de recursos de  saúde dos servidores, para garantir a alta disponibilidade dos recursos  da web, e o balanceamento de carga, que distribui o tráfego entre vários servidores para melhorar o desempenho. (**SaaS**)
+- Amazon CloudFront - 
 - Elastic Load Balancing
 
-Gerenciamento e Governança:
+### Gerenciamento e Governança
 
 - Amazon CloudWatch
 - AWS Auto Scaling
@@ -36,25 +36,25 @@ Gerenciamento e Governança:
 - AWS Config
 - AWS CloudTrail
 
-Banco de dados:
+### Banco de dados
 
 - Amazon RDS
 - Amazon DynamoDB
 
-Segurança, identidade e compliance:
+### Segurança, identidade e compliance:
 
 - AWS Identity & Access Management
 - AWS WAF
 - AWS Shield
 - AWS Artifact
 
-Gerenciamento de custos:
+### Gerenciamento de custos:
 
 - Calculadoras
 - AWS Cost
 - AWS Orçamentos
 
-Armazenamentos:
+### Armazenamentos:
 
 - Amazon S3
 - Amazon EBS
