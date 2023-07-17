@@ -28,7 +28,7 @@ Temos aqui alguns serviços tais como:
 
 ### Gerenciamento e Governança
 
-- Amazon CloudWatch
+- Amazon CloudWatch ** principal produto
 - AWS Auto Scaling
 - AWS Truted Advisor
 - AWS Organizations
