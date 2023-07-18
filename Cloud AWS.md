@@ -28,7 +28,7 @@ Temos aqui alguns serviços tais como:
 
 ### Gerenciamento e Governança
 
-- Amazon CloudWatch ** principal produto
+- **Amazon CloudWatch** - Um serviço da AWS que permite monitorar recursos e aplicações em nuvem em tempo real, ele coleta e rastreia métricas, logs e eventos importante que ocorrem nos serviços da AWS. ** principal produto (**SaaS**)
 - AWS Auto Scaling
 - AWS Truted Advisor
 - AWS Organizations
@@ -38,12 +38,12 @@ Temos aqui alguns serviços tais como:
 
 ### Banco de dados
 
-- Amazon RDS * * principal produto
+- Amazon RDS - é um serviço que facilita a criação, operação e estabilidade de bancos de dados relacionais na nuvem. Permite que você escolha e configure facilmente um bando de dados relacional popular como MYSQL, PostgreSQL, Oracle, Sql Server entre outros sem necessidade de instalar ou gerenciar o software de banco de dados. * * principal produto (**SaaS**)
 - Amazon DynamoDB
 
 ### Segurança, identidade e compliance:
 
-- AWS Identity & Access Management - **principal produto
+- **AWS Identity & Access Management** - é um serviço que ajuda você a controlar e gerenciar o acesso aos recursos da sua conta na AWS, o IAM funciona como um "porteiro ele permite que seja feita as configurações para conceder ou negar permissões para usuários, grupos e até mesmo outros serviços da AWS. ** principal produto (**SaaS**)
 - AWS WAF
 - AWS Shield
 - AWS Artifact
@@ -56,7 +56,7 @@ Temos aqui alguns serviços tais como:
 
 ### Armazenamentos:
 
-- Amazon S3 - ** produto principal
+- **Amazon S3** - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. ** produto principal
 - Amazon EBS
 - S3 Glacier
 - Família Snow
@@ -97,6 +97,21 @@ Benefícios da Escalabilidade:
 - Melhorar a disponibilidade
 - Obter um ambiente tolerante a falhas
 - Refletir nos custos operacionais
+
+## Região e Zonas de disponibilidade
+
+- **Região é um conjunto de data centers** em uma localização geográfica
+- Cada região possui um conjunto de zonas de disponibilidade
+- **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers.
+- **Edge Locations** ou **PoPs (pontos de presença) são utilizados como cache de dados** para distribuição de conteúdo. São centros de dados distribuídos globalmente em diferentes cidades ao redor do mundo. Fazem parte da rede de entregas de conteúdo da AWS conhecido como Amazon Cloud Front, pode ser entendido como mini data centers localizados perto de grandes áreas metropolitanas e guardam temporariamente dados e conteúdos populares como imagens e vídeos e arquivos estáticos.
+
+## Planos de suporte
+
+- **Basic** - Grátis, é oferecido a todos os clientes da AWS, tem suporte limitado, não permite abrir tickets. Acesso ao AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem) 7 itens, inclui acesso a documentação, fóruns, recursos de auto atendimento. Ideal para uso em ambientes de desenvolvimento e testes com baixas exigências de suporte.
+- **Developer** - Oferece acesso ao suporte técnico por e-mail durante horário comercial. Ajuda resolver questões técnicas e problemas relacionados a serviços AWS, indicado para desenvolvedores que precisam de um pouco mais de suporte para ambientes de produção de menor escala. Custo de $29,00, nível experimentação. Acesso ao AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem) 7 itens. Abrir tickets apenas 1 pessoa. SLA até 24 horas horário comercial.
+- **Business** - suporte 24x7 com tempos de resposta rápido(até 1 hora) e suporte aprimorado. Inclui um gerente de sucesso do cliente dedicado para fornecer orientação estratégica(um terceirizado). Ideal para empresas que necessitam de um suporte completo e personalizado para ambientes de produção críticos. Ticket com mais de uma pessoa, suporte por email, telefone e chat, acesso completo ao  AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem), custo de $100,00, ambiente de produção.
+- **Enterprise on-Ramp** - custo de $5.500,00 . acesso completo ao  AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem), suporte por telefone, email e chat 24x7, ticket para mais de uma pessoa, SLA de 30min para sistema critico inativo, orientações de interoperabilidade suporte por terceiros e concierge e orientação arquitetura.
+- **Enterprise** - custo de $15.000,00, para operações de missão crítica, acesso completo ao  AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem),  suporte por telefone, email e chat 24x7, ticket para mais de uma pessoa, SLA de 15min para sistema critico inativo, orientações de interoperabilidade suporte por terceiros e concierge e orientação arquitetura e TAM.
 
 
 
