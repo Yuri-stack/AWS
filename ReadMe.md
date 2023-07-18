@@ -50,13 +50,13 @@ Temos aqui alguns serviços tais como:
 
 ### Gerenciamento de custos:
 
-- Calculadoras
-- AWS Cost
-- AWS Orçamentos
+- **Calculadoras AWS** - é uma ferramenta gratuita que estiva os custos dos serviços da AWS que você planeja utilizar. (**Saas**)
+- **AWS Cost** - ferramenta de análise de custos que faz parte da AWS Management Console, exibe custos detalhados por conta. São custos já ocorridos. (**SaaS**)
+- **AWS Budgets ou Orçamentos** - Ferramenta que permite que você defina limites de gastos personalizados para os seus recursos. Também é possível criar alertar para esses valores limite definidos. (**SaaS**)
 
 ### Armazenamentos:
 
-- **Amazon S3** - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. ** produto principal
+- **Amazon S3** - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. | `Aplicação`:  pode ser utilizado como: **Armazenamento de arquivos**, **Acesso e compartilhamento**, **Escalabilidade** pois podemos lidar com qualquer quantidade de dados, **Backup e recuperação**. ** produto principal (**SaaS**)
 - Amazon EBS
 - S3 Glacier
 - Família Snow
