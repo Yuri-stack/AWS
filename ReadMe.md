@@ -169,7 +169,7 @@ Monta gráficos para avaliar o uso de serviços, tem uma interface fácil de usa
 
 
 
-## CloudFront prática
+## CloudFront prática **em desenvolvimento
 
 - Criar uma distribuição
 - definir o bucket
