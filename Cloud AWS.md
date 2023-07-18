@@ -65,7 +65,7 @@ Temos aqui alguns serviços tais como:
 
 A plataforma que oferece os serviços fica responsável pela manutenção do hardware, atualizações entre outros
 
-O contratante fica responsável pela segurança da sua parte, escolha pelos produtos e gerenciamento, por exemplo. Lembrando que quase tudo pode ser gerenciado a adaptado conforme a demanda.
+O contratante fica responsável pela segurança da sua parte, escolha pelos produtos e gerenciamento, por exemplo. Lembrando que quase tudo pode ser gerenciado a adaptado conforme a demanda. A seguir vamos retomar o assunto deixando mais nítido as responsabilidades diante de cada modelo de serviço ofertado pela AWS.
 
 ## Seis vantagens do uso da AWS
 
@@ -86,7 +86,20 @@ O contratante fica responsável pela segurança da sua parte, escolha pelos prod
 
 Para ficar mais nítida a diferença desses serviços veja quais são as responsabilidades de cada camada para cada um dos modelos computacionais:
 
-![image-20230717170153303](C:\Users\tijac\AppData\Roaming\Typora\typora-user-images\image-20230717170153303.png)
+- **Modelo tradicional on Premises** - Responsabilidade da empresa contratante são as camadas de:
+  APP | Dados | Sistema Operacional | Servidores | Armazenamento | Rede
+
+- **Modelo IaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+APP | Dados | Sistema Operacional
+
+- **Modelo PaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+APP | Dados
+
+- **Modelo SaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+nada apenas utilizar o serviço
 
 ## Escalabilidade e elasticidade
 
