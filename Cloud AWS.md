@@ -113,9 +113,50 @@ Benefícios da Escalabilidade:
 - **Enterprise on-Ramp** - custo de $5.500,00 . acesso completo ao  AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem), suporte por telefone, email e chat 24x7, ticket para mais de uma pessoa, SLA de 30min para sistema critico inativo, orientações de interoperabilidade suporte por terceiros e concierge e orientação arquitetura.
 - **Enterprise** - custo de $15.000,00, para operações de missão crítica, acesso completo ao  AWS Trusted Advisor (serviço de recomendação e orientação para otimizar o ambiente de nuvem),  suporte por telefone, email e chat 24x7, ticket para mais de uma pessoa, SLA de 15min para sistema critico inativo, orientações de interoperabilidade suporte por terceiros e concierge e orientação arquitetura e TAM.
 
+## AWS Budgets - orçamento de serviços
+
+É um serviço que permite definir limites de gastos e receber alertas quando os custos da sua conta atingirem determinado valor. É possível criar limites mensal ou escolher uma meta personalizada, se os custos ultrapassarem esse limite, a AWS enviará um alerta para notificar por e-mail e por meio de notificação na AWs management Console.
+
+### Como criar um alerta:
+
+1. Pesquisar pelo serviço na busca do portal AWS
+2. clicar em criar um orçamento 
+3. opção Personalizado - Avançado 
+4. orçamento de custos final da pagina - botão próximo 
+5. preencher nome do orçamento
+6. escolher opção periodo mensal 
+7. orçamento recorrente repete todo mês 
+8. Mes que vamos iniciar Junho 
+9. orçamento corrigido custo = U$10,00(dolares) 
+10. Todos os serviços 
+11. custos não combinados 
+12. botão Próximo 
+13. adicionar alerta
+14. botão criar orçamento
+
+![img](https://cdn.discordapp.com/attachments/1123729724812841021/1124095608794394747/image.png)
+
+![img](https://cdn.discordapp.com/attachments/1123729724812841021/1124095642193625248/image.png)
+
+![img](https://cdn.discordapp.com/attachments/1123729724812841021/1124095698275680278/image.png)
+
+![resultado esperado](https://cdn.discordapp.com/attachments/1123729724812841021/1124095862843396096/image.png)
+
+## AWS Cost Explorer
+
+Monta gráficos para avaliar o uso de serviços, tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo.
+
+![AWS Cost Explorer](https://cdn.discordapp.com/attachments/1123729724812841021/1124096036063940738/image.png)
+
+## Calculadora de preços da AWS
+
+É o serviço que ajuda ter uma prévia/ estimativa dos serviços antes de implementa-lós em sua conta AWS, é um simulador de custos para nuvem. Link:https://calculator.aws/#/ 
 
 
-CloudFront prática
+
+
+
+## CloudFront prática
 
 - Criar uma distribuição
 - definir o bucket
