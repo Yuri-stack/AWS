@@ -87,7 +87,8 @@ O contratante fica responsável pela segurança da sua parte, escolha pelos prod
 Para ficar mais nítida a diferença desses serviços veja quais são as responsabilidades de cada camada para cada um dos modelos computacionais:
 
 - **Modelo tradicional on Premises** - Responsabilidade da empresa contratante são as camadas de:
-  APP | Dados | Sistema Operacional | Servidores | Armazenamento | Rede
+
+APP | Dados | Sistema Operacional | Servidores | Armazenamento | Rede
 
 - **Modelo IaaS** - Responsabilidade da empresa contratante são as camadas de:
 
