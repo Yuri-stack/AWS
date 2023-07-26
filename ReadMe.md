@@ -34,7 +34,7 @@ Temos aqui alguns serviços tais como:
 - **AWS Organizations** - organiza a parte financeira da sua AWS, permite gerenciar e controlar seu ambiente de maneira centralizada. Serviço global gerencia todas as contas da AWS, centraliza o faturamento, faz agregamento de custos e gera economia com pooling de instancias reservadas. Possui camada de segurança colocando restrições nas contas com SCP.
 - **AWS Cloud Formation** - é um serviço que oferece uma linguagem comum para que você possa descrever e fornecer todos os recursos de infraestrutura em um ambiente de nuvem. permite que você utilize um arquivo de texto para modelar um ambiente em nuvem (json ou Yaml por exemplo). Paga pelos recursos que configurou e não pelo Cloud formation. É uma forma de trabalho que ajuda a manter uma organização na estruturação da sua nuvem, ele oferece formas de acesso (AWS `Command Line Interface`, `Gerenciador de console AWS` ou `SDKs`) onde vc escolher um template (modelo pra gerar uma estrutura ) ou criar sua própria template - que vai gerar sua Stack (que é uma pilha de comandos para gerar suas instancias e configurações), **permite replicar uma configuração em nuvem várias vezes e ter um gerenciamento de versões e alterações**.
 - **AWS Config** - Responsável por gerenciar mudanças, auxilia nas auditorias, compliance. Permite acessar, auditar e avaliar as configurações dos recursos da AWS. Restrito a uma região, configura-se regras(checklist). Notificação por Amazon SMS caso tenha sido contratado, armazena os dados em um bucket S3. 
-- **AWS CloudTrail** - é um serviço que possibilita a governança, conformidade, auditoria operacional e auditoria de riscos em sua conta AWS, **diferença entre ele e o CloudWatch é que o CloudWatch tem foco em desempenho e o CloudTrail é conformidade e auditoria** (trilha de como foi feito e quem quando e tudo em log). Podemos criar uma trilha para acompanhar alguma ação ou ainda no Dashboard teremos uma visão geral, ele mantem 90 dias de histórico e pode-se criar a trilha para acompanhar por mais de 90 dias.
+- **AWS CloudTrail** - é um serviço que possibilita a governança, conformidade, auditoria operacional e auditoria de riscos em sua conta AWS, **diferença entre ele e o CloudWatch é que o CloudWatch tem foco em desempenho e o CloudTrail é conformidade e auditoria** (trilha de como foi feito e quem quando e tudo em log). Podemos criar uma trilha para acompanhar alguma ação ou ainda no Dashboard teremos uma visão geral, ele mantem 90 dias de histórico e pode-se criar a trilha para acompanhar por mais de 90 dias. Ideal para acompanhar que alterou ou deletou algum serviço.
 
 ### Banco de dados
 
@@ -66,6 +66,34 @@ Temos aqui alguns serviços tais como:
 A plataforma que oferece os serviços fica responsável pela manutenção do hardware, atualizações entre outros
 
 O contratante fica responsável pela segurança da sua parte, escolha pelos produtos e gerenciamento, por exemplo. Lembrando que quase tudo pode ser gerenciado a adaptado conforme a demanda. A seguir vamos retomar o assunto deixando mais nítido as responsabilidades diante de cada modelo de serviço ofertado pela AWS.
+
+## Escalabilidade e elasticidade 
+
+**Escalabilidade** diz respeito ao serviço que é escalável, ou seja, pode crescer de acordo com as necessidades para atende-las. Exige uma constante observação do comportamento da requisição. Ver se limites são ultrapassados com qual frequência e em que momentos. Assim podemos definir:
+
+- número mínimo de instancias;
+- número desejado de instancias;
+- número disponível para escalonar de instancias
+- número máximo de instancias;
+
+Sendo o máximo o número mínimo mais o número disponível (ou seja o total de recursos que se tem a disposição). 
+
+> Escalabilidade   =  **Amazon EC2 Auto Scaling**
+
+Benefícios do Auto Scaling:
+
+1. Melhorar a disponibilidade
+2. Obter um ambiente tolerante a falhas - se uma instancia cair outra assume
+3. Refletir nos custos operacionais
+
+**Elasticidade** conseguir aumentar um recurso computacionais, mas sempre poder voltar ao número menor depois.
+
+> Exemplos dessa elasticidade estão nos serviços: **Amazon EC2**, **Elastic Load Balancing**, **AWS Elastic Beanstalk** e **Amazon Elastic Cache**.
+
+- **Escalabilidade** - aumentar/ diminuir número de instancias - servidores
+- **Elasticidade** - aumentar/ diminuir recursos computacionais(memória, armazenamento...)
+
+
 
 ## Seis vantagens do uso da AWS
 
@@ -102,22 +130,68 @@ APP | Dados
 
 nada apenas utilizar o serviço
 
-## Escalabilidade e elasticidade
+## Infraestrutura global AWS
 
-**Escalabilidade** - pode crescer de acordo com a sua necessidade de demanda, necessita de acompanhamento/ gerenciamento para entender a demanda. Aqui definimos o numero mínimo de instâncias por exemplo e esse vai ser seu ponto de partida a **escalabilidade esta no número definido como máximo de instancias que se pode atingir além do mínimo**. Exemplo: tendo definido 2 instancias como mínimo, podemos  definir que em momento de alta demanda nossa aplicação pode adicionais mais 1 instância totalizando 3 instancias no máximo. **A escalabilidade aqui seria de mais 1 instância**.
+- **Região** é um conjunto de zona de disponibilidades onde teremos um conjunto de coleção de recursos em uma localização geográfica. Exemplo o norte da Vigínia é geralmente a região onde são implementados novos recursos em primeiro momento e depois esses recursos são replicados para outras regiões. Outro dado interessante é que no norte da Virgínia temos 6 zonas de disponibilidade. São 16 regiões.
 
-Benefícios da Escalabilidade:
+### zonas de disponibilidade e regiões
 
-- Melhorar a disponibilidade
-- Obter um ambiente tolerante a falhas
-- Refletir nos custos operacionais
+| Localização                            | Quant. de zonas | Região         |
+| -------------------------------------- | --------------- | -------------- |
+| Africa (Cape Town)                     | 2               | af-south-1     |
+| Hong Kong                              | 2               | ap-east-1      |
+| Tóquio                                 | 2               | ap-northeast-1 |
+| Asia Pacific (Seoul)                   | 2               | ap-northeast-2 |
+| Asia Pacific (Osaka)                   | 2               | ap-northeast-3 |
+| Mumbai                                 | 2               | ap-south-1     |
+| Ásia-Pacífico (Haiderabade)            | 1               | ap-south-2     |
+| Singapura                              | 2               | ap-southeast-1 |
+| Sydney                                 | 2               | ap-southeast-2 |
+| Ásia-Pacífico (Jacarta)                | 1               | ap-southeast-3 |
+| Ásia-Pacífico (Melbourne)              | 1               | ap-southeast-4 |
+| Canada (Central)                       | 4               | ca-central-1   |
+| Europe (Frankfurt)                     | 2               | eu-central-1   |
+| Europa (Zurique)                       | 1               | eu-central-2   |
+| Estolcomo                              | 2               | eu-north-1     |
+| Europa (Espanha)                       | 1               | eu-south-2     |
+| Irlanda                                | 2               | eu-west-1      |
+| Londres                                | 2               | eu-west-2      |
+| Paris                                  | 2               | eu-west-3      |
+| Oriente Médio (Emirados Árabes Unidos) | 1               | me-central-1   |
+| Oriente Médio (Bahrein)                | 2               | me-south-1     |
+| São Paulo                              | 2               | sa-east-1      |
+| Norte da Virgínia                      | 6               | us-east-1      |
+| Ohio                                   | 3               | us-east-2      |
+| AWS GovCloud (Leste dos EUA)           | 1               | us-gov-east-1  |
+| AWS GovCloud (Oeste dos EUA)           | 1               | us-gov-west-1  |
+| Norte Califórnia                       | 3               | us-west-1      |
+| Oregon                                 | 4               | us-west-2      |
 
-## Região e Zonas de disponibilidade
+- **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers. Distância entre as zonas 100km. Uma zona de disponibilidade é um ou mais data centers distintos. Estes são conectados para ter baixa latência, auto rendimento e redundância. Essa disposição das zonas está relacionado ao conceito e Escalabilidade.
 
-- **Região é um conjunto de data centers** em uma localização geográfica
-- Cada região possui um conjunto de zonas de disponibilidade
-- **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers.
-- **Edge Locations** ou **PoPs (pontos de presença) são utilizados como cache de dados** para distribuição de conteúdo. São centros de dados distribuídos globalmente em diferentes cidades ao redor do mundo. Fazem parte da rede de entregas de conteúdo da AWS conhecido como Amazon Cloud Front, pode ser entendido como mini data centers localizados perto de grandes áreas metropolitanas e guardam temporariamente dados e conteúdos populares como imagens e vídeos e arquivos estáticos.
+Ao contratar um serviço AWs a ideia será sempre ver qual a região mais próximo do seu usuário. Não importando muito qual a zona de disponibilidade exatamente esta seu serviço, o foco é a região estar o mais próximo possível. Dependendo de como é configurado a sua instancia quando uma zona estiver com problemas ou indisponível a outra irá assumir o serviço. Esse modelo garantio a AWS o título de líder do IaaS - infraestrutura como serviço.
+
+- **Edge Locations** ou **PoPs (pontos de presença) são utilizados como cache de dados** é uma infraestrutura de servidores, localizado próximo de uma zona de disponíbilidade, armazena dados mais solicitados no cache para melhorar latência de uma requisição de consulta. Estão em pontos estratégicos sem cobertura pela AWS. Exemplo:  Amazon Cloud Front, que armazena o cache do seu site estático, por exemplo. Outro serviço AWS Lightsail ou AWS ElastiCache (banco de dados em memória)
+
+## Serviços Globais e Regionais
+
+**Serviços regionais**:
+
+A maioria dos serviços são regionais, ou seja, se você iniciar esse serviço em uma região ele esta em um data center, se você alterar a região ele vai deixar de estar disponível naquela região.
+
+- EC2
+- AWS Lambda
+- AWS Elastic Beanstalk
+- Amazon EC2 Auto Scaling
+
+**Serviços Globais**:
+
+Serviços globais independem de uma região, você pode configurar e depois acessar de qualquer região.
+
+- Amazon CloudFront
+- Amazon Route 53
+- AWS Identity & Access Management
+- AWS Waf
 
 ## Planos de suporte
 
@@ -202,21 +276,21 @@ São os kits de desenvolvimento para as tecnologias dentro do ambiente AWS, para
 
 ## Serviço AWS budgets - prática
 
-- clicar em criar um orçamento 
-- opção Personalizado - Avançado 
-- orçamento de custos 
-- final da pagina - botão próximo 
-- preencher seu nome 
-- escolher opção período mensal 
-- orçamento recorrente repete todo mês 
-- Mês que vamos iniciar Junho 
-- orçamento corrigido 
-- custo = valor que se deseja ter como limite 
-- Todos os serviços 
-- custos não combinados 
-- botão Próximo 
-- adicionar alerta
-- botão criar orçamento
+1. clicar em criar um orçamento 
+2. opção Personalizado - Avançado 
+3. orçamento de custos 
+4. final da pagina - botão próximo 
+5. preencher seu nome 
+6. escolher opção período mensal 
+7. orçamento recorrente repete todo mês 
+8. Mês que vamos iniciar Junho 
+9. orçamento corrigido 
+10. custo = valor que se deseja ter como limite 
+11. Todos os serviços 
+12. custos não combinados 
+13. botão Próximo 
+14. adicionar alerta
+15. botão criar orçamento
 
 Prints:
 
