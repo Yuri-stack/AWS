@@ -15,6 +15,15 @@ Temos aqui alguns serviços tais como:
 ## Computação
 
 - **EC2** - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
+
+Possui famílias/ tipo de instancia para melhor atender casos e necessidades, exemplo: 
+
+**Família A**,T,M,MAC para uso geral, servidores, homologação e repositórios de códigos. 
+
+**Família C** para computacional, modelagem científica, servidores de jogos ou anúncios e marchine learning.
+
+instancia **T2.@xLarge** podemos entender que **T** tipo da instancia **T**= familia **2** = geração, **xLarge** = tamanho
+
 - **Amazon EC2 Auto Scaling** - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. 
 - **AWS Elastic Beanstalk** - é um serviço que serve de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
 - **Aws Lambda** - permite executar código sem a necessidade de provisional ou gerenciar servidores, é como um assistente que executa pequenos trechos de código (funções) em resposta a eventos específicos. ( exemplo de eventos: solicitação http, upload de um arquivo no bucket ou alteração em um banco de dados) (**PaaS**)
@@ -44,15 +53,16 @@ Temos aqui alguns serviços tais como:
 ### Segurança, identidade e compliance:
 
 - **AWS Identity & Access Management** - é um serviço que ajuda você a controlar e gerenciar o acesso aos recursos da sua conta na AWS, o IAM funciona como um "porteiro ele permite que seja feita as configurações para conceder ou negar permissões para usuários, grupos e até mesmo outros serviços da AWS. ** principal produto (**SaaS**)
-- AWS WAF - 
-- AWS Shield
+- **AWS WAF** - é um f**irewall de aplicativos web** que permite especificar quais tráfego tem o seu acesso permitido ou bloqueado, mediante a regras pré-definidas e personalizáveis. Filtro por endereço Ip, por cabeçalhos, pelo corpo http e alguma strings uri, bloquear requisições maliciosas com **SQL injection** ou **Cross-site Scripting**, **bloquear por países**, size constraints (tamanho da requisição) e rate base-rules
+- **AWS Shield** **Standard** - proteger o ambiente **contra ataque D-Dos** ( distributed Denial of Service) - varias requisições simultânea para matar a aplicação ou deixar lento o servidor. Serviço grátis.
+- **AWS Shield Advanced** - você contrata o serviço com uma equipe para suporte 24x7 que investem contra esse tipo de ataque esse serviço é pago. oferece proteção extra no **Amazon EC2**, **Elastic Load Balancing**, **Amazon CloudFront**, **AWS Global Accelerator** e o **Route 53**.
 - **AWS Artifact** - acordos e relatórios de conformidade. aqui encontramos AICPA SOC, ISO 27001, FedRAMP, irap, pci, nist, HIPAA, C5 e outros. 
 
 ### Gerenciamento de custos:
 
 - **Calculadoras AWS** - é uma ferramenta gratuita que estiva os custos dos serviços da AWS que você planeja utilizar. (**Saas**)
-- **AWS Cost** - ferramenta de análise de custos que faz parte da AWS Management Console, exibe custos detalhados por conta. São custos já ocorridos. (**SaaS**)
-- **AWS Budgets ou Orçamentos** - Ferramenta que permite que você defina limites de gastos personalizados para os seus recursos. Também é possível criar alertar para esses valores limite definidos. (**SaaS**)
+- **AWS Cost** - ferramenta de **análise de custos** que faz parte da AWS Management Console, exibe custos detalhados por conta. São custos já ocorridos. (**SaaS**) Aqui conseguimos ver serviço, conta vinculada, região...
+- **AWS Budgets ou Orçamentos** - Ferramenta que permite que você defina limites de gastos personalizados para os seus recursos. Também é possível **criar alertar para esses valores limite definidos**. (**SaaS**)
 
 ### Armazenamentos:
 
@@ -274,10 +284,10 @@ Sobre o nível gratuito: https://aws.amazon.com/pt/free/
 3. opção Personalizado - Avançado 
 4. orçamento de custos final da pagina - botão próximo 
 5. preencher nome do orçamento
-6. escolher opção periodo mensal 
+6. escolher opção período mensal 
 7. orçamento recorrente repete todo mês 
-8. Mes que vamos iniciar Junho 
-9. orçamento corrigido custo = U$10,00(dolares) 
+8. Mês que vamos iniciar Junho 
+9. orçamento corrigido custo = U$1,00(dólares)
 10. Todos os serviços 
 11. custos não combinados 
 12. botão Próximo 
@@ -295,6 +305,12 @@ Sobre o nível gratuito: https://aws.amazon.com/pt/free/
 ## AWS Cost Explorer
 
 Monta gráficos para avaliar o uso de serviços, tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo.
+
+Dica:
+
+**Para gerar relatório de qual serviço esta gerando maior custo, ou qual região utilizar o serviço AWS Cost Explorer, lá é possível tbm gerar arquivo CSV com os dados.**
+
+O **AWS Cost Explorer oferece interface para visualizar entender e gerenciar os custos** e o uso da AWS ao longo do tempo, já a **AWS Budgets é para definir orçamento(quanto espero gastar)** e enviar alertas quando o uso excede o valor orçado.
 
 ![AWS Cost Explorer](https://cdn.discordapp.com/attachments/1123729724812841021/1124096036063940738/image.png)
 
@@ -349,6 +365,14 @@ O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua
 - Use o **Least Privilege Principle** nos usuários
 - Documentos Json definem as permissões de acesso
 - Grupos contém outros usuários, mas não podem conter outros grupos
+
+**Primeiro autentica - depois autoriza**
+
+> **Usuários** - pessoa ou serviço, com credenciais permanentes. Use o Least Privilege
+>
+> **Grupos** - coletivo de usuários (grupos não podem conter outros grupos)
+>
+> **Funções** - não são permissões é um método de autenticação temporária.
 
 ## WAF - dicas
 
