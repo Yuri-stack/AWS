@@ -47,7 +47,7 @@ instancia **T2.@xLarge** podemos entender que **T** tipo da instancia **T**= fam
 
 ### Banco de dados
 
-- **Amazon RDS** - é um serviço que facilita a criação, operação e estabilidade de bancos de dados relacionais na nuvem. Permite que você escolha e configure facilmente um bando de dados relacional popular como MYSQL, PostgreSQL, Oracle, Sql Server entre outros sem necessidade de instalar ou gerenciar o software de banco de dados.  (**SaaS**) * * principal produto 
+- **Amazon RDS** - é um serviço que facilita a criação, operação e estabilidade de bancos de dados relacionais na nuvem. Permite que você escolha e configure facilmente um banco de dados relacional popular como MYSQL, PostgreSQL, Oracle, Sql Server entre outros sem necessidade de instalar ou gerenciar o software de banco de dados.  (**SaaS**) * * principal produto 
 - **Amazon DynamoDB** - banco de dados não relacional, serveless ou seja em nuvem e se paga pelo que é consumido e não pelas instancias adquiridas. É escalável (ilimitado em armazenamento e taxa de transferência ), confiável tem backup continuo dos últimos 35 dias. É rápido e tem latência em microssegundos.
 
 ### Segurança, identidade e compliance:
