@@ -22,9 +22,9 @@ Possui famílias/ tipo de instancia para melhor atender casos e necessidades, ex
 
 **Família C** para computacional, modelagem científica, servidores de jogos ou anúncios e marchine learning.
 
-instancia **T2.@xLarge** podemos entender que **T** tipo da instancia **T**= familia **2** = geração, **xLarge** = tamanho
+instancia **T2.@xLarge** podemos entender que **T** tipo da instancia **T**= família **2** = geração, **xLarge** = tamanho
 
-- **Amazon EC2 Auto Scaling** - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. 
+- **Amazon EC2 Auto Scaling** - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Então você pode definir politicas de quando o servidor deve aumentar o seu potencial de entrega e quando deve voltar ao número normal de instancias atendendo. Dessa forma se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. Ele monitora as métricas e desempenho das instancias.
 - **AWS Elastic Beanstalk** - é um serviço que serve de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
 - **Aws Lambda** - permite executar código sem a necessidade de provisional ou gerenciar servidores, é como um assistente que executa pequenos trechos de código (funções) em resposta a eventos específicos. ( exemplo de eventos: solicitação http, upload de um arquivo no bucket ou alteração em um banco de dados) (**PaaS**)
 
@@ -73,7 +73,7 @@ instancia **T2.@xLarge** podemos entender que **T** tipo da instancia **T**= fam
 
 ## Escalabilidade e elasticidade 
 
-**Escalabilidade** diz respeito ao serviço que é escalável, ou seja, pode crescer de acordo com as necessidades para atende-las. Exige uma constante observação do comportamento da requisição. Ver se limites são ultrapassados com qual frequência e em que momentos. Assim podemos definir:
+**Escalabilidade** diz respeito ao serviço que é escalável, ou seja, pode crescer de acordo com as necessidades para atender. Exige uma constante observação do comportamento da requisição. Ver se limites são ultrapassados com qual frequência e em que momentos. Assim podemos definir:
 
 - número mínimo de instancias;
 - número desejado de instancias;
@@ -262,7 +262,7 @@ Sobre o nível gratuito: https://aws.amazon.com/pt/free/
   - escalabilidade vertical e horizontal
   - recursos descartáveis nada é para sempre
   - automação: serveless IaaS auto scaling
-  - Loose couple: falhar não podem cascatear não ao monolito
+  - Loose couple: falhar não podem cascatear não ao monólito
   - serviços não servidores: será que não tem um serviço para isso?
 
 ### 5 pilares Well-architected
@@ -282,7 +282,7 @@ Sobre o nível gratuito: https://aws.amazon.com/pt/free/
 1. Pesquisar pelo serviço na busca do portal AWS
 2. clicar em criar um orçamento 
 3. opção Personalizado - Avançado 
-4. orçamento de custos final da pagina - botão próximo 
+4. orçamento de custos final da página - botão próximo 
 5. preencher nome do orçamento
 6. escolher opção período mensal 
 7. orçamento recorrente repete todo mês 
@@ -313,6 +313,22 @@ Dica:
 O **AWS Cost Explorer oferece interface para visualizar entender e gerenciar os custos** e o uso da AWS ao longo do tempo, já a **AWS Budgets é para definir orçamento(quanto espero gastar)** e enviar alertas quando o uso excede o valor orçado.
 
 ![AWS Cost Explorer](https://cdn.discordapp.com/attachments/1123729724812841021/1124096036063940738/image.png)
+
+> DICA para prova: 
+>
+> - **Cost explorer** - você acompanha histórico do que já gastou, análise de histórico de gastos
+>
+> - **Budgest** -  se manter dentro de um orçamento, alerta de quando o orçamento estiver chegando ao limite
+> - **calculadora** - previsão de gastos futuros, estimativas.
+> - **AWS Config** - auxiliar em auditorias, é regional, mantem histórico de ações e alterações de configurações dos serviços AWS
+> - **AWS Organizations** - serviço global permite gerenciar múltiplas contas - tem api para criação de contas, permite incluir restrições as contas.
+> - **AWS Artifact** - documentos(artefatos), relatórios (ISO, PCI, SOC), atende a auditorias internas e conformidades 
+> - **AWS CloudTrail** - governança, conformidade auditoria de riscos - trilha de quem fez, quando tudo em logs
+> - **Amazon CloudWatsh** - monitorar recursos e aplicações em tempo real.
+> - **IAM** -  gerencia acesso aos recursos, é como um porteiro.
+> - **AWS CoudFormation** - você pode por meio de arquivo json ou Yaml configurações de permissões e ou serviços da AWS
+
+
 
 ## Calculadora de preços da AWS
 
