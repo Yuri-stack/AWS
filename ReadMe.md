@@ -1,6 +1,8 @@
 # Cloud AWS
 
-Computação na nuvem é o termo que utilizamos para serviços e plataformas que estarão disponíveis fora da sua máquina local, podemos aqui ter desde sistema operacionais, servidores completos com recursos de memória Ram e Processadores tudo por conta de uma empresa que estará cuidando e responsável pela parte física dessa operação. Tipo e tamanho do recurso serão escolhidos pelo contratante e o pagamento na maioria das vezes é conforme a demanda de utilização.
+Computação na nuvem é o termo que utilizamos para serviços e plataformas que estarão disponíveis fora da sua máquina local, podemos aqui ter desde sistema operacionais, servidores completos com recursos de memória Ram e Processadores tudo por conta de uma empresa que estará cuidando da parte física dessa operação. Lembrando que o tipo e tamanho do recurso serão escolhidos pelo contratante e o pagamento na maioria das vezes é conforme a demanda de utilização.
+
+Para melhor aproveito do material, esta sendo implementado nesse momento um dicionário de termos, sinta-se a vontade em contribuir sua dúvida ou observação sobre o mesmo através da rede social: https://www.linkedin.com/in/hernandesjacque/ e/ou e-mail: ti.jacque@gmail.com.
 
 Temos aqui alguns serviços tais como:
 
@@ -8,13 +10,49 @@ Temos aqui alguns serviços tais como:
 - redes e entregas de conteúdos
 - gerenciamento e governança
 - banco de dados
-- segurança, identidade e compliance
+- segurança, identidade e compliance*
 - gerenciamento de custos
 - armazenamentos
 
 ## Computação
 
+Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servidores, onde podemos ter controle total de sistema operacional, versão, atualizações de Sistemas e outras aplicações ou apenas alocar para ter um local que hospedagem para aplicações, transferindo preocupações com o hardware e até mesmo podemos transferir as preocupações com atualizações de sistemas para a AWS, focando assim, na aplicação final. Abaixo vamos ver alguns serviços considerados serviços de computação:
+
 - **EC2** - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
+
+  - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**;
+
+    - **Spot Instances**: até 90% desconto conparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço;; não utilize para trabalhos críticos e banco de dados
+
+      > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem para e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
+
+    - **Sob Demanda**: alto custo de utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso(por hora ou por segundo(Linux cobrado após 60 segundos)) , não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
+    
+- **Instancias reservadas**: Até 75% de desconto em comparação ao modelo por demanda, aplicações que exigem capacidade reservada, comprometimento de uso da instância por um período de 1 ou 3 anos, possui pagamento adiantado;
+      *Aplica-se para ambiente de produção que foi testado e não será modificado, aplicações que precisar ser estado constante, excelente para banco de dados*;
+
+    - **Host Dedicado**: Hardware dedicado, servidor físico E2C Exclusivo para você, cumprir requisitos de conformidade, visibilidade de soquetes/ núcleos/Ids de hosts, Comprometimento por um período de 3 anos, pode ser comprado sob demanda de horas, se optar por reserva até 70% de desconto em comparação com instâncias por demanda;
+
+      > *Aplica-se quando deseja vincular licenças de software, como Windows Server, SQL Server e Suse Linux Enterprise Server. Podemos citar exemplos de casos de aplicação onde os requisitos de conformidade são mais rigorosos(PCI DSS, HIPAA...) garantindo maior segurança e reduzindo riscos de vazamento de dados,  Cargas de trabalho altamente sensíveis- informações confidenciais*. 
+
+      - Um host dedicado EC2 é um servidor físico dedicado exclusivamente a uma única conta AWS.
+      - Isso significa que você tem controle total sobre o hardware subjacente e não compartilha recursos físicos com outras contas AWS.
+      - Os hosts dedicados são uma opção quando você precisa de um alto nível de isolamento para atender a requisitos específicos de conformidade ou segurança.
+      - Eles podem ser caros, pois você paga pela capacidade do host dedicado, independentemente de quantas instâncias EC2 são executadas nele.
+    
+      > Resumo: **banco de dados - instância reservada**; **trazer sua licença on premisse para a AWS - Host dedicado**; **Ambiente de teste por curto período, picos de acesso ou homologação - Sob demanda**; **Computação extra - Instâncias Spot**;
+    
+    - **Instância Dedicada**: Hardware dedicado, Pode compartilhar o hardware com outras instâncias na mesma conta, não tem controle sobre o posicionamento da instância(você só pode movimentar o hardware se interromper e reiniciar), comprometimento por um período de 3 anos
+    
+      * para a instância dedicada, não teremos visibilidade de soquetes, núcleos e ids dos hosts, nem afinidade entre um host e a instância, nem inserção de instância específica nem como adicionar capacidade usando uma solicitação de alocação. 
+      
+      * > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.*
+      
+      - Uma instância dedicada EC2 é uma instância de máquina virtual (VM) que é executada em um host dedicado.
+      - Embora a instância compartilhe o host dedicado com outras instâncias, essas instâncias pertencem à mesma conta AWS.
+      - Isso fornece um nível mais alto de isolamento em comparação com as instâncias EC2 padrão, que podem compartilhar hardware com outras contas AWS.
+      - As instâncias dedicadas EC2 são úteis quando você deseja garantir que suas VMs estejam em um ambiente mais isolado, mas não precisa de um host dedicado completo.
+      - O custo de uma instância dedicada EC2 é geralmente menor do que o de um host dedicado, pois você paga apenas pelas instâncias que utiliza.
 
 Possui famílias/ tipo de instancia para melhor atender casos e necessidades, exemplo: 
 
@@ -470,4 +508,12 @@ O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua
 ## Amazon DynamoDB
 
 
+
+## Dicionário AWS
+
+| Termo       | Definição                                                    |
+| ----------- | ------------------------------------------------------------ |
+|             |                                                              |
+| Compliance  | Estar de acordo com as regras/leis de um estado, pais, empresa. Adaptação dos serviços a região e empresa a qual se atende, seguindo as regras e leis vigentes. |
+| On Premises | Servidores locais, muitas vezes instalados no local onde o a empresa esta operando. Aqui a empresa tem que as responsabilidades de manter toda parte física e lógica em funcionamento e com as suas devidas atualizações. |
 
