@@ -289,6 +289,30 @@ Tipos de oferta:
 
 Sobre o nível gratuito: https://aws.amazon.com/pt/free/
 
+## AWS Trusted Advisor 
+
+Afinal o que é o AWS Trusted Advisor? É um recurso oferecido pela AWS visando o melhor aproveitamento dos serviços pensando em alguns pilares:
+
+- ​	Otimizar os custos com dicas/alertas com indicações de melhor ajuste dentro da nuvem. (aqui teremos visão de serviços subutilizados, instancias de banco de dados ociosas, endereço ip estático não associado, tempo limite excessivos em funções lambda ...)
+- Performance melhorada dos serviços em uso levando em consideração configuração x uso(uso de computação EC2 e configuração no Cloudfront ou taxa de transferência e latência)
+- Segurança melhorada sugerindo práticas recomendadas básicas de segurança, Chaves de acesso expostas, permissões desnecessárias do bucket S3.
+- Tolerância a falhas para melhorar a confiabilidade de seus serviços, (grupo EC2 auto scaling, verificações de integridade excluídas no Route 53, zonas de disponibilidade desabilitadas e backups de RDS desabilitados)
+- Cotas de serviço- são os números máximo de recursos que você pode criar em uma conta, podemos ser notificados quando atingir 80% de uma cota de serviço.
+
+## AWS IQ
+
+Recebe ajuda sob demanda de especialistas terceirizados e certificados. É uma forma mais facil de encontrar profissionais certificados e qualificados para soluções de demanda específica em sua nuvem; Você pode confiar e ter a colaboração segura, entregando chaves de acesso e caso necessário você pode remover o acesso do profissional a qualquer momento; Pagamento integrado, ou seja, pagar dentro da sua conta AWS o especialista terceirizado.
+
+## AWS Skill Builder
+
+Espaço de aprendizado da AWS.
+
+Possui 3 planos:
+
+- **Gratuito**: mais de 600 cursos sob demanda e planos de aprendizado ; cursos preparatórios para exames padrão; conjunto de perguntas oficiais da AWS Certification; AWS Cloud Quest: Cloud Practitioner; Crachás Digitais
+- **Assinatura individual**: todo plano grátis + Acesso ilimitado a mais de 1225 laboratórios; Cursos aprimorados de preparação para exames; AWS Cloud Quest - funções intermediárias e avançadas; AWS Industry Quest; Exames simulados oficinas da AWS Certification; Jornada AWS Jam;
+- **Assinatura de equipe**: Tudo do plano individual e mais Capacidade de atribuir treinamento individual e em equipe; painel administrativo; relatórios abrangentes; eventos do AWS Jam; Logon único (opcional)
+
 ## Interfaces de acesso AWS 
 
 1. **AWS Management Console** - é o sistema da AWS acessado por navegador ou por celular com o aplicativo AWS Console Mobile APP.
