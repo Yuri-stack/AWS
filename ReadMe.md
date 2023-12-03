@@ -4,7 +4,7 @@ Computação na nuvem é o termo que utilizamos para serviços e plataformas que
 
 Para melhor aproveito do material, esta sendo implementado nesse momento um dicionário de termos, sinta-se a vontade em contribuir sua dúvida ou observação sobre o mesmo através da rede social: https://www.linkedin.com/in/hernandesjacque/ e/ou e-mail: ti.jacque@gmail.com.
 
-Temos aqui alguns serviços tais como:
+Temos aqui alguns serviços tais como: 
 
 - computação
 - redes e entregas de conteúdos
