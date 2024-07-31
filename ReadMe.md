@@ -14,6 +14,117 @@ Temos aqui alguns serviços tais como:
 - gerenciamento de custos
 - armazenamentos
 
+## Infraestrutura global AWS
+
+- **Região** é um conjunto de zona de disponibilidades onde teremos um conjunto de coleção de recursos em uma localização geográfica. Exemplo o norte da Virgínia é geralmente a região onde são implementados novos recursos em primeiro momento e depois esses recursos são replicados para outras regiões. Outro dado interessante é que no norte da Virgínia temos 6 zonas de disponibilidade.
+
+  Dessa forma teremos os novos recursos implementados primeiro nas Regiões que surgiram primeiro, e por ultimo nas regiões mais atuais.
+
+  Outro fato importante é saber que cada região é como se um Estado, que é empregado os servidores e cada uma das regiões vão ter sempre no mínimo 2 zonas de disponibilidade para garantir redundância entre os serviços/dados nesta alocados.
+
+### zonas de disponibilidade e regiões
+
+| Localização                            | Quant. de zonas | Região         |
+| -------------------------------------- | --------------- | -------------- |
+| Africa (Cape Town)                     | 2               | af-south-1     |
+| Hong Kong                              | 2               | ap-east-1      |
+| Tóquio                                 | 2               | ap-northeast-1 |
+| Asia Pacific (Seoul)                   | 2               | ap-northeast-2 |
+| Asia Pacific (Osaka)                   | 2               | ap-northeast-3 |
+| Mumbai                                 | 2               | ap-south-1     |
+| Ásia-Pacífico (Haiderabade)            | 1               | ap-south-2     |
+| Singapura                              | 2               | ap-southeast-1 |
+| Sydney                                 | 2               | ap-southeast-2 |
+| Ásia-Pacífico (Jacarta)                | 1               | ap-southeast-3 |
+| Ásia-Pacífico (Melbourne)              | 1               | ap-southeast-4 |
+| Canada (Central)                       | 4               | ca-central-1   |
+| Europe (Frankfurt)                     | 2               | eu-central-1   |
+| Europa (Zurique)                       | 1               | eu-central-2   |
+| Estolcomo                              | 2               | eu-north-1     |
+| Europa (Espanha)                       | 1               | eu-south-2     |
+| Irlanda                                | 2               | eu-west-1      |
+| Londres                                | 2               | eu-west-2      |
+| Paris                                  | 2               | eu-west-3      |
+| Oriente Médio (Emirados Árabes Unidos) | 1               | me-central-1   |
+| Oriente Médio (Bahrein)                | 2               | me-south-1     |
+| **São Paulo**                          | 2               | sa-east-1      |
+| Norte da Virgínia                      | 6               | us-east-1      |
+| Ohio                                   | 3               | us-east-2      |
+| AWS GovCloud (Leste dos EUA)           | 1               | us-gov-east-1  |
+| AWS GovCloud (Oeste dos EUA)           | 1               | us-gov-west-1  |
+| Norte Califórnia                       | 3               | us-west-1      |
+| Oregon                                 | 4               | us-west-2      |
+
+- **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers. Distância entre as zonas de até 100km. Estes são conectados para ter baixa latência, auto rendimento e redundância. Essa disposição das zonas está relacionado ao conceito e Escalabilidade.
+
+Ao contratar um serviço AWs a ideia será sempre ver qual a região mais próximo do seu usuário. Não importando muito qual a zona de disponibilidade exatamente esta seu serviço, o foco é a região estar o mais próximo possível. Dependendo de como é configurado a sua instancia quando uma zona estiver com problemas ou indisponível a outra irá assumir o serviço. Esse modelo garantiu a AWS o título de **líder do IaaS - infraestrutura como serviço**.
+
+- **Edge Locations** ou **PoPs (pontos de presença) ou zonas locais - são utilizados como cache de dados** é uma infraestrutura de servidores, localizado próximo de uma zona de disponibilidade, armazena dados mais solicitados no cache para melhorar latência de uma requisição de consulta. Estão em pontos estratégicos sem cobertura pela AWS. Exemplo:  **Amazon Cloud Front**, que armazena o cache do seu site estático, por exemplo. Outro serviço **AWS Lightsail** ou **AWS ElastiCache** (banco de dados em memória)
+
+## Seis vantagens do uso da AWS
+
+1. **Save Money** - não gastar com manutenção de hardware
+2. **Stop Guessing** - ter maior precisão de valores com investimento em tecnologias, não é necessário planejar infraestrutura que ficará obsoleta daqui algum tempo, você pode contratar um serviço menor e ir escalando conforme a demanda e acompanhamento de consumo.
+3. **Variable Expenses** - você paga pelo que é utilizado e diminui a posse, é o aluguel do recurso na nuvem. Troca de despesa capital por despesa variável.
+4. **Economies of Scale** - quanto mais empresas contratam um serviço na AWS mais esse recurso ficará com valor mais acessível pois a AWS "repassa" essa escala de maneira a melhorar o valor cobrado.
+5. **Increase Speed and Agility** - enquanto em um rede local você demora para subir um novo serviços, na nuvem isso é resolvido em poucos cliques. Temos também facilidade em montar ambientes de testes que podem ser excluídos após os testes, por exemplo.
+6. **Go Global** - Sua aplicação pode ser disponibilizada em diversas regiões no globo, diminuindo a latência do serviço. Torne-se global em minutos.
+
+## Responsabilidade compartilhada
+
+É o conceito onde a AWS assume a sua parte de responsabilidade no serviço e o Arquiteto/ ou pessoa responsável pela implementação dentro da empresa ficará responsável pelas configurações e toda a parte que lhe cabe. 
+
+A plataforma que oferece os serviços fica responsável pela manutenção do hardware, atualizações entre outros...
+
+O contratante fica responsável pela segurança da sua parte, escolha pelos produtos e gerenciamento, por exemplo. Lembrando que quase tudo pode ser gerenciado a adaptado conforme a demanda. A seguir vamos retomar o assunto deixando mais nítido as responsabilidades diante de cada modelo de serviço ofertado pela AWS.
+
+**Para o cliente** - Responsavilidade IN the cloud (na nuvem) a responsabilidade do contratante é definir as tecnologias, escolher formas de criptografia, escolher tipo de rede, configurar serviços e segurança, níveis de acesso e grupos de usuários...
+
+**Para a AWS** - responsabilidade OF the cloud (responsabilidade da nuvem). Responsável por suportar os serviços, manter a estrutura computacional, regiões e zonas de disponibilidade.
+
+## IaaS, SaaS e PaaS
+
+**IaaS** - infraestrutura como serviço é o modelo computacional que entrega toda a estrutura que seria física (servidores, redes, cabeamentos, segurança de rede) - Amazon EC2 você consegue criar e gerenciar instâncias computacionais, onde nela vc terá o ambiente necessário para executar suas aplicações. Essas instâncias é um computador virtual onde pode-se definir a sua estrutura e rodar nesse ambiente suas aplicações. O objetivo desse serviço será tirar das mãos do contratante a preocupação com a parte física de um servidor. Mas aqui ainda temos como responsabilidade do contratante escolher a melhor tecnologia, serviço operacional e outros e também manter as devidas atualizações do sistema operacional e demais recursos que ele optou em utilizar em seu servidor.
+
+**PaaS** - Plataforma como serviço, a diferença aqui é que não fica mais sob a responsabilidade do contratante atualizações de sistemas operacionais, por exemplo. O foco é na implantação e gerenciamento das suas aplicações, exemplo: AWS Elastic Beanstalk, esse é um serviço que facilita a implantação e o gerenciamento de aplicativos web e serviços na nuvem, aqui você não se preocupa com configuração de servidores, redes, balanceamento de carga e escalonamento, você só precisa se concentrar em desenvolver seu aplicativo e fazer o upload do código.
+
+**Saas** - Software como serviço aqui o produto é completo, exemplo Gmail, você só utiliza o serviço não precisa se preocupar nem com a infla estrutura nem com a tecnologia da aplicação.
+
+Para ficar mais nítida a diferença desses serviços veja quais são as responsabilidades de cada camada para cada um dos modelos computacionais:
+
+- **Modelo tradicional on Premises** - Responsabilidade da empresa contratante são as camadas de:
+
+APP | Dados | Sistema Operacional | Servidores | Armazenamento | Rede
+
+- **Modelo IaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+APP | Dados | Sistema Operacional
+
+- **Modelo PaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+APP | Dados
+
+- **Modelo SaaS** - Responsabilidade da empresa contratante são as camadas de:
+
+nada apenas utilizar o serviço
+
+| Modelo computacional           | Responsabilidade do Cliente                                  | Responsabilidade AWS                                         |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Modelo tradicional on Premises | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Sistema Operacional<br />Firewall<br />Tratamento para Antivírus e invasões<br />Manutenção de Hardware<br />Manutenção e atualização de software<br />Manutenção de atualizações de programas<br />Segurança física<br />Segurança online<br />Backup<br />Chaves para os programas originais<br />Ter que pagar por uma nova estrutura caso precisar atender mais de uma região. | -                                                            |
+| Modelo IaaS                    | Escolha de Sistema Operacional<br />Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Manutenção de Softwares que forem implementados<br />Atualizações de software<br />Manutenção de atualizações de programas<br />Segurança online<br />Backup<br />Licenças dos programas (caso optar)<br />Escolha da região onde deseja ser atendido<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física |
+| Modelo PaaS                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
+| Modelo SaaS                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
+
+
+
+## Recurso Gerenciados
+
+É ter como responsabilidade da AWS a infraestrutura e todos os recursos que te permitem utilizar um serviço de banco de dados.  Exemplo: precisando de um banco de dados em nuvem, podemos contratar o serviço de EC2, criar uma instancia neste e ficar responsável por toda configuração do ambiente e atualizações para o funcionamento do banco de dados ou podemos contratar apenas o serviço de banco de dados e deixar a AWS responsável por tornar este funcional e disponível.
+
+Um recurso deixa de ser gerenciado por você e quando a outra parte inicia o gerenciamento, atualizações e manutenção do sistema operacional e a segurança.
+
+
+
 ## Computação
 
 Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servidores, onde podemos ter controle total de sistema operacional, versão, atualizações de Sistemas e outras aplicações ou ainda podemos apenas locar o espaço que vai ser hospedagem para aplicações, transferindo preocupações com o hardware e até mesmo podemos transferir as preocupações com atualizações de sistemas para a AWS, focando assim, na aplicação final. Abaixo vamos ver alguns serviços considerados serviços de computação:
@@ -147,101 +258,7 @@ Benefícios do Auto Scaling:
 
 
 
-## Seis vantagens do uso da AWS
-
-1. **Save Money** - não gastar com manutenção de hardware
-2. **Stop Guessing** - ter maior precisão de valores com investimento em tecnologias, não é necessário planejar infraestrutura que ficará obsoleta daqui algum tempo, você pode contratar um serviço menor e ir escalando conforme a demanda e acompanhamento de consumo.
-3. **Variable Expenses** - você paga pelo que é utilizado e diminui a posse, é o aluguel do recurso na nuvem. Despesas variáveis.
-4. **Economies of Scale** - quanto mais empresas contratam um serviço na AWS mais esse recurso ficará com valor mais acessível pois a AWS "repassa" essa escala de maneira a melhorar o valor cobrado.
-5. **Increase Speed and Agility** - enquanto em um rede local você demora para subir um novo serviços, na nuvem isso é resolvido em poucos cliques. Temos também facilidade em montar ambientes de testes que podem ser excluídos após os testes, por exemplo.
-6. **Go Global** - Sua aplicação pode ser disponibilizada em diversas regiões no globo, diminuindo a latência do serviço.
-
-## Responsabilidade compartilhada
-
-A plataforma que oferece os serviços fica responsável pela manutenção do hardware, atualizações entre outros
-
-O contratante fica responsável pela segurança da sua parte, escolha pelos produtos e gerenciamento, por exemplo. Lembrando que quase tudo pode ser gerenciado a adaptado conforme a demanda. A seguir vamos retomar o assunto deixando mais nítido as responsabilidades diante de cada modelo de serviço ofertado pela AWS.
-
-**Para o cliente** - Responsavilidade IN the cloud - ou seja na nuvem a responsabilidade do contratante é definir as tecnologias, escolher formas de criptografia, escolher tipo de rede, configurar firewall...
-
-**Para a AWS** - responsabilidade OF the cloud - ou seja a responsabilidade da nuvem. Responsável por suportar os serviços, manter a estrutura computacional, regiões e zonas de disponibilidade.
-
-## IaaS, SaaS e PaaS
-
-**IaaS** - infraestrutura como serviço é o modelo computacional que entrega toda a estrutura que seria física (servidores, redes, cabeamentos, segurança de rede, Sistema operacional) - Amazon EC2 você consegue criar e gerenciar instâncias computacionais, onde nela vc terá o ambiente necessário para executar suas aplicações. Essas instâncias é um computador virtual onde pode-se definir a sua estrutura e rodar nesse ambiente suas aplicações. O objetivo desse serviço será tirar das mãos do contratante a preocupação com a parte física de um servidor. Mas aqui ainda temos como responsabilidade do contratante escolher a melhor tecnologia, serviço operacional e outros e também manter as devidas atualizações do sistema operacional e demais recursos que ele optou em utilizar em seu servidor.
-
-**PaaS** - Plataforma como serviço, a diferença aqui é que não fica mais sob a responsabilidade do contratante atualizações de sistemas operacionais, por exemplo. O foco é na implantação e gerenciamento das suas aplicações, exemplo: AWS Elastic Beanstalk, esse é um serviço que facilita a implantação e o gerenciamento de aplicativos web e serviços na nuvem, aqui você não se preocupa com configuração de servidores, redes, balanceamento de carga e escalonamento, você só precisa se concentrar em desenvolver seu aplicativo e fazer o upload do código.
-
-**Saas** - Software como serviço aqui o produto é completo, exemplo Gmail, você só utiliza o serviço não precisa se preocupar nem com a infla estrutura nem com a tecnologia da aplicação.
-
-Para ficar mais nítida a diferença desses serviços veja quais são as responsabilidades de cada camada para cada um dos modelos computacionais:
-
-- **Modelo tradicional on Premises** - Responsabilidade da empresa contratante são as camadas de:
-
-APP | Dados | Sistema Operacional | Servidores | Armazenamento | Rede
-
-- **Modelo IaaS** - Responsabilidade da empresa contratante são as camadas de:
-
-APP | Dados | Sistema Operacional
-
-- **Modelo PaaS** - Responsabilidade da empresa contratante são as camadas de:
-
-APP | Dados
-
-- **Modelo SaaS** - Responsabilidade da empresa contratante são as camadas de:
-
-nada apenas utilizar o serviço
-
-## Recurso Gerenciados
-
-É ter como responsabilidade da AWS a infraestrutura e todos os recursos que te permitem utilizar um serviço de banco de dados.  Exemplo: precisando de um banco de dados em nuvem, podemos contratar o serviço de EC2, criar uma instancia neste e ficar responsável por toda configuração do ambiente e atualizações para o funcionamento do banco de dados ou podemos contratar apenas o serviço de banco de dados e deixar a AWS responsável por tornar este funcional e disponível.
-
-Um recurso deixa de ser gerenciado por você e quando a outra parte inicia o gerenciamento, atualizações e manutenção do sistema operacional e a segurança.
-
-
-
-## Infraestrutura global AWS
-
-- **Região** é um conjunto de zona de disponibilidades onde teremos um conjunto de coleção de recursos em uma localização geográfica. Exemplo o norte da Vigínia é geralmente a região onde são implementados novos recursos em primeiro momento e depois esses recursos são replicados para outras regiões. Outro dado interessante é que no norte da Virgínia temos 6 zonas de disponibilidade. São 16 regiões.
-
-### zonas de disponibilidade e regiões
-
-| Localização                            | Quant. de zonas | Região         |
-| -------------------------------------- | --------------- | -------------- |
-| Africa (Cape Town)                     | 2               | af-south-1     |
-| Hong Kong                              | 2               | ap-east-1      |
-| Tóquio                                 | 2               | ap-northeast-1 |
-| Asia Pacific (Seoul)                   | 2               | ap-northeast-2 |
-| Asia Pacific (Osaka)                   | 2               | ap-northeast-3 |
-| Mumbai                                 | 2               | ap-south-1     |
-| Ásia-Pacífico (Haiderabade)            | 1               | ap-south-2     |
-| Singapura                              | 2               | ap-southeast-1 |
-| Sydney                                 | 2               | ap-southeast-2 |
-| Ásia-Pacífico (Jacarta)                | 1               | ap-southeast-3 |
-| Ásia-Pacífico (Melbourne)              | 1               | ap-southeast-4 |
-| Canada (Central)                       | 4               | ca-central-1   |
-| Europe (Frankfurt)                     | 2               | eu-central-1   |
-| Europa (Zurique)                       | 1               | eu-central-2   |
-| Estolcomo                              | 2               | eu-north-1     |
-| Europa (Espanha)                       | 1               | eu-south-2     |
-| Irlanda                                | 2               | eu-west-1      |
-| Londres                                | 2               | eu-west-2      |
-| Paris                                  | 2               | eu-west-3      |
-| Oriente Médio (Emirados Árabes Unidos) | 1               | me-central-1   |
-| Oriente Médio (Bahrein)                | 2               | me-south-1     |
-| São Paulo                              | 2               | sa-east-1      |
-| Norte da Virgínia                      | 6               | us-east-1      |
-| Ohio                                   | 3               | us-east-2      |
-| AWS GovCloud (Leste dos EUA)           | 1               | us-gov-east-1  |
-| AWS GovCloud (Oeste dos EUA)           | 1               | us-gov-west-1  |
-| Norte Califórnia                       | 3               | us-west-1      |
-| Oregon                                 | 4               | us-west-2      |
-
-- **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers. Distância entre as zonas 100km. Uma zona de disponibilidade é um ou mais data centers distintos. Estes são conectados para ter baixa latência, auto rendimento e redundância. Essa disposição das zonas está relacionado ao conceito e Escalabilidade.
-
-Ao contratar um serviço AWs a ideia será sempre ver qual a região mais próximo do seu usuário. Não importando muito qual a zona de disponibilidade exatamente esta seu serviço, o foco é a região estar o mais próximo possível. Dependendo de como é configurado a sua instancia quando uma zona estiver com problemas ou indisponível a outra irá assumir o serviço. Esse modelo garantiu a AWS o título de líder do IaaS - infraestrutura como serviço.
-
-- **Edge Locations** ou **PoPs (pontos de presença) são utilizados como cache de dados** é uma infraestrutura de servidores, localizado próximo de uma zona de disponibilidade, armazena dados mais solicitados no cache para melhorar latência de uma requisição de consulta. Estão em pontos estratégicos sem cobertura pela AWS. Exemplo:  Amazon Cloud Front, que armazena o cache do seu site estático, por exemplo. Outro serviço AWS Lightsail ou AWS ElastiCache (banco de dados em memória)
+- 
 
 ## Serviços Globais e Regionais
 
