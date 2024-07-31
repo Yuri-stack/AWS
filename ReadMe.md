@@ -22,7 +22,7 @@ Temos aqui alguns serviços tais como:
 
   Outro fato importante é saber que cada região é como se um Estado, que é empregado os servidores e cada uma das regiões vão ter sempre no mínimo 2 zonas de disponibilidade para garantir redundância entre os serviços/dados nesta alocados.
 
-### zonas de disponibilidade e regiões
+### zonas de disponibilidade e regiões (outubro de 2023)
 
 | Localização                            | Quant. de zonas | Região         |
 | -------------------------------------- | --------------- | -------------- |
@@ -90,6 +90,12 @@ O contratante fica responsável pela segurança da sua parte, escolha pelos prod
 
 **Saas** - Software como serviço aqui o produto é completo, exemplo Gmail, você só utiliza o serviço não precisa se preocupar nem com a infla estrutura nem com a tecnologia da aplicação.
 
+### Recurso Gerenciados
+
+É ter como responsabilidade da AWS a infraestrutura e todos os recursos que te permitem utilizar um serviço de banco de dados.  Exemplo: precisando de um banco de dados em nuvem, podemos contratar o serviço de EC2, criar uma instancia neste e ficar responsável por toda configuração do ambiente e atualizações para o funcionamento do banco de dados ou podemos contratar apenas o serviço de banco de dados e deixar a AWS responsável por tornar este funcional e disponível.
+
+Um recurso deixa de ser gerenciado por você e quando a outra parte inicia o gerenciamento, atualizações e manutenção do sistema operacional e a segurança.
+
 Para ficar mais nítida a diferença desses serviços veja quais são as responsabilidades de cada camada para cada um dos modelos computacionais:
 
 - **Modelo tradicional on Premises** - Responsabilidade da empresa contratante são as camadas de:
@@ -115,16 +121,6 @@ nada apenas utilizar o serviço
 | Modelo PaaS                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
 | Modelo SaaS                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
 
-
-
-## Recurso Gerenciados
-
-É ter como responsabilidade da AWS a infraestrutura e todos os recursos que te permitem utilizar um serviço de banco de dados.  Exemplo: precisando de um banco de dados em nuvem, podemos contratar o serviço de EC2, criar uma instancia neste e ficar responsável por toda configuração do ambiente e atualizações para o funcionamento do banco de dados ou podemos contratar apenas o serviço de banco de dados e deixar a AWS responsável por tornar este funcional e disponível.
-
-Um recurso deixa de ser gerenciado por você e quando a outra parte inicia o gerenciamento, atualizações e manutenção do sistema operacional e a segurança.
-
-
-
 ## Computação
 
 Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servidores, onde podemos ter controle total de sistema operacional, versão, atualizações de Sistemas e outras aplicações ou ainda podemos apenas locar o espaço que vai ser hospedagem para aplicações, transferindo preocupações com o hardware e até mesmo podemos transferir as preocupações com atualizações de sistemas para a AWS, focando assim, na aplicação final. Abaixo vamos ver alguns serviços considerados serviços de computação:
@@ -133,22 +129,28 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
 
-  - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**;
-
-    - **Spot Instances**: até 90% desconto conparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço;; não utilize para trabalhos críticos e banco de dados
-
-      > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
+  - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**:
 
     - **Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso(por hora ou por segundo(Linux cobrado após 60 segundos)) , não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
-      
+
       > *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
+
+    
     
     - **Instancias reservadas**: Até 75% de desconto em comparação ao modelo por demanda, aplicações que exigem capacidade reservada, comprometimento de uso da instância por um período de 1 ou 3 anos, possui pagamento adiantado;
-  
+    
       > *Aplica-se para ambiente de produção que foi testado e não será modificado, aplicações que precisar ser estado constante, excelente para banco de dados*;
   
-    - **Host Dedicado**: Hardware dedicado, servidor físico E2C Exclusivo para você, cumprir requisitos de conformidade, visibilidade de soquetes/ núcleos/Ids de hosts, Comprometimento por um período de 3 anos, pode ser comprado sob demanda de horas, se optar por reserva até 70% de desconto em comparação com instâncias por demanda;
+      
+  
+      **Spot Instances**: até 90% desconto comparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço; não utilize para trabalhos críticos e banco de dados
 
+      > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
+    
+      
+    
+    - **Host Dedicado**: Hardware dedicado, servidor físico E2C Exclusivo para você, cumprir requisitos de conformidade, visibilidade de soquetes/ núcleos/Ids de hosts, Comprometimento por um período de 3 anos, pode ser comprado sob demanda de horas, se optar por reserva até 70% de desconto em comparação com instâncias por demanda;
+    
       > *Aplica-se quando deseja vincular licenças de software, como Windows Server, SQL Server e Suse Linux Enterprise Server. Podemos citar exemplos de casos de aplicação onde os requisitos de conformidade são mais rigorosos(PCI DSS, HIPAA...) garantindo maior segurança e reduzindo riscos de vazamento de dados,  Cargas de trabalho altamente sensíveis- informações confidenciais*. 
     
       - Um host dedicado EC2 é um servidor físico dedicado exclusivamente a uma única conta AWS.
@@ -156,12 +158,14 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
       - Os hosts dedicados são uma opção quando você precisa de um alto nível de isolamento para atender a requisitos específicos de conformidade ou segurança.
       - Eles podem ser caros, pois você paga pela capacidade do host dedicado, independentemente de quantas instâncias EC2 são executadas nele.
     
+      
+    
     - **Instância Dedicada**: Hardware dedicado a sua empresa, pode ser  compartilhado com outras instâncias na mesma conta, não tem controle sobre o posicionamento da instância(você só pode movimentar o hardware se interromper e reiniciar), comprometimento por um período de 3 anos
     
       * para a instância dedicada, não teremos visibilidade de soquetes, núcleos e ids dos hosts, nem afinidade entre um host e a instância, nem inserção de instância específica nem como adicionar capacidade usando uma solicitação de alocação. 
-      
+    
       > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.*
-      
+    
       - Uma instância dedicada EC2 é uma instância de máquina virtual (VM) que é executada em um host dedicado.
       - Embora a instância compartilhe o host dedicado com outras instâncias, essas instâncias pertencem à mesma conta AWS.
       - Isso fornece um nível mais alto de isolamento em comparação com as instâncias EC2 padrão, que podem compartilhar hardware com outras contas AWS.
@@ -179,11 +183,121 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Então você pode definir politicas de quando o servidor deve aumentar o seu potencial de entrega e quando deve voltar ao número normal de instancias atendendo. Dessa forma se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. Ele monitora as métricas e desempenho das instancias.
 
-### AWS Elastic Beanstalk
+### Segurança no EC2
+
+1. criar uma política de segurança(role/função) de acesso
+2. criar a instancia 
+3. selecionar a instancia 
+   1. ir na opção ações
+   2. opção segurança
+   3. opção modificar função do IAM
+4. escolher a role/função que precisa aplicar
+5. botão atualizar função do IAM
+
+> Evite uso de chaves de acesso, usar Role
+
+### Criar a função/role de acesso ao  EC2
+
+1. no IAM clique em role ou função
+2. clicar em criar função
+3. selecionar opção de serviço da AWS
+4. selecionar EC2 "Allows EC2 intaces to call AWS services on your behalf"
+5. botão próximo
+6. falar qual o objetivo da role exemplo: acesso ao S3x
+7. selecionar opção Amazon S3 full Access ou S3 Read OnlyAccess
+8. botão próximo
+9. dar nome de fácil identificação
+10. clicar em criar
+
+## Armazenamentos:
+
+- **Amazon S3** (Amazon Simple Storage Service) - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. | `Aplicação`:  pode ser utilizado como: **Armazenamento de arquivos**, **Acesso e compartilhamento**, **Escalabilidade** pois podemos lidar com qualquer quantidade de dados, **Backup e recuperação**. ** produto principal (**SaaS**)
+
+  Para o serviço S3 temos alguns tipos de classe de armazenamento que podem ser escolhidos conforme a necessidade do cliente, melhor performance ou melhor custo.
+
+  Dicionário do S3:
+
+  | Serviço | Descrição                                                    |
+  | ------- | ------------------------------------------------------------ |
+  | buckets | é o local onde estará armazenado seus objetos/arquivos/dados, tal qual um drive do seu computador ele tem um endereço, pode ser de acesso publico ou restrito |
+  | objetos | tudo que podemos armazenar em um bucket é chamado objeto (fotos, arquivos, dados, backups, etc) |
+  | keys    | referencia ao objeto dentro do bucket, essa key vai sempre indicar o **diretório + objeto** |
+  | regiões | o serviço S3 é um serviço regional com visão global, ele é criado em uma região, pode ter redundância ou não dentro dessa região, mas ele é visto de dentro do ambiente AWS globalmente, por esse motivo seu bucket deve ter nome único. |
+
+  Classes de armazenamento S3:
+
+  | Classe                             | Descrição                                                    | Aplicação                                                    | Valor estimado(dolar)                                        | Redundância                   | Tipo de acesso                         |
+  | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- | -------------------------------------- |
+  | S3 Standard                        | Alto nível de resiliência, disponibilidade e performance     | mídias utilizadas frequentemente por usuários;  Big Data - dados para análise em tempo real;<br />armazenar dados gerados pelo usuário em plataformas sociais | $0,023 a $0,021 por Gb                                       | sim                           | Imediato baixa lantência               |
+  | S3 Intelligent Tiering (IT)        | Alto nível de resiliência, disponibilidade e performance, serviço com inteligência para reduzir automaticamente o custo movendo os objetos para uma classe mais acessível caso não seja muito acessado. No nível de acesso frequente é otimizado. Custo até 40% menor que o Standard para os arquivos pouco acessados, 60% para os arquivos raramente acessados.<br />30 dias sem acesso -> Infrequent Access<br />90 dias sem acesso -> Archive Instant Access<br />180 dias ou mais -> Deep Archive Access | Backups que podem ser acessados de forma irregular (urgente ou não); Dados que podem ter acesso de forma irregular<br />Dados que podem ter picos de acesso<br />vídeos de alta resolução com acesso imprevistos | 0,0025 por 1000 objetos  acesso frequente ou $0,00099 por Gb objetos acesso raro | sim                           | Imediato de baixa latência             |
+  | S3 Express One Zone                | Alta performance, acesso de um milissegundo, aplicações sensível a alta latências. Até 50% mais barato que a Standard. Permite integração com o Sage Marker Model Training (IA de Machine Learn), Amazon Athenas  (IA de Machine Learn), Amazon EMR (IA de Machine Learn), e o AWS Glue (IA de melhoria da qualidade de dados)<br />Tem riscos de perda dos objetos uma vez que esta em uma única zona de disponibilidade | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br />Dados de projetos concluídos<br />Protótipos e versões antigas de software<br />Vídeos ou audios raramente acessados<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediato de baixa latência             |
+  | S3 Standard IA(Infrequent Access)  | Armazenar dados de menor frequência de acesso, tem acesso rápido quando necessário.<br /> | Armazenar backups mensais ou anuais de sistemas e bases de dados que não são acessados regularmente;<br />Manter cópias de segurança de arquivos críticos;<br />Armazenar dados de transações financeiras ou registros de clientes que precisam ser retidos por um longo período;<br />Manter registros antigos de funcionários, folhas de pagamento, relatórios de desempenho e outros documentos relacionados a RH;<br />Manter cópias de materiais de marketing, publicações anteriores, vídeos de treinamento; | $0,0125 por Gb                                               | sim                           | Imediato de baixa latência             |
+  | S3 One Zone IA (infrequent access) | Baixa latência e voltado para arquivos de baixa frequência de acesso. Voltado para dados recriáveis. Até 20% mais acessível que o Standard IA | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediado baixa latência                |
+  | Glacier Instant Retrieval          | Custo baixo para objetos raramente acessados, exige recuperação com baixa latência 68% mais barato que o Standard IA | Arquivos médicos; Recursos de mídia; Noticias; Arquivos gerados pelo usuário; | $0,004 por Gb                                                | sim                           | Imediato de baixa latência             |
+  | Glacier Flexible Retrieval         | Baixo custo, 10% mais barato que o Glacier Instant Retrieval, arquivos acessados no máximo 2 vezes por ano e de forma assíncrona, flexibilidade para acessar grandes conjuntos de dados sem custo adicional.<br />Oferece criptografia para os objetos em repouso e SSL para objetos em transição | backup;                                                      | $0,0036 por Gb                                               | sim                           | configurável de minutos a horas        |
+  | Amazon S3 Glacier Deep Archive     | a mais acessível em questão de valores, armazenamento para preservação digital de longo prazo, acesso de 1 a 2 vezes ao ano, tempo de armazenamento de 7 a 10 ou mais anos. | Serviços financeiros; Saúde; Setor público;                  | $0,00099 por Gb                                              | sim                           | até 12 horas para recuperar os objetos |
+
+  > valores podem ser alterados**
+
+  
+
+### Versionamento no S3
+
+Pode ser habilitado porém não pode ser desabilitado, uma vez acionado pode ser apenas pausado.
+
+Gera uma nova cópia/versão do arquivo a cada modificação que for armazenada, ideal para casos onde a versão precisa ser armazenada, pode gerar maior custo do bucket pela quantidade de objetos armazenada.
+
+### Server Access Login S3
+
+Armazena o histórico das ações dentro do bucket e quem as realizou, relatório de acesso. Gera custos adicionais.
+
+### WebSite Estático no S3
+
+Pode servir para armazenamento de páginas estáticas e sites HTML, tem URL única 
+
+### CDN - content delivery S3
+
+É um serviço de cache e entrega rápida para site estático que pode ser utilizado em conjunto com o S3 - **Cloud Front** quando se altera algo no site deve-se derrubar o cache e refazer para propagar a alteração. Atende em Zona local.
+
+### Ciclo de vida S3 (life cycle)
+
+Permite mover objetos do bucket de forma configurável e automática para customizar os custos do mesmo evitando guardar objetos desnecessários.
+
+1. mover objetos atuais para classes de armazenamentos
+2. mover objetos versão desatualizadas entre classes de armazenamento
+3. expirar versões desatualizadas entre classes de armazenamento (exemplo as ultimas 5 versão permanece em uma classe as demais expirar)
+4. excluir marcadores de exclusão de objetos expirados e carregamentos fracionados(documentos que são feitos quando o download da erro o bucket armazena no seu próprio bucket)
+
+### Replicação de dados S3
+
+É possível replicar um bucket para outra região para melhor atender outra filial da empresa por exemplo
+
+### Politica IAM S3
+
+Cuidado com acesso público para buckets criados, aplicar regras de grupo, usuário, roles, escritas por json para listar, permitir e negar acessos.
+
+### Bucket Policy S3
+
+Função por bucket, indicado para torna-lo mais seguro e definir regras de acesso
+
+### Bucket ACL
+
+Aplicado por bucket uma lista de acesso, é o ultimo recurso a ser indicado para a segurança do bucket.
+
+### Criptografia S3
+
+- **SSE-S3** - site server Encription - o S3 gerencia e define as chaves de criptografia - indicado
+- **SSE-KMS** - quem gerencia as chaves de criptografia é o KMS, você define as chaves e salva a mesma no cofre(KMS) - indicado
+- **SSE-C** - Cliente fornece as chaves e armazena no bucket - pouco indicado
+- **CSE** - cliente fornece as chaves e armazena as mesmas fora do bucket - alto risco
+
+
+
+## AWS Elastic Beanstalk
 
 - é um serviço que serve de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
 
-### Aws Lambda
+## Aws Lambda
 
 - permite executar código sem a necessidade de provisional ou gerenciar servidores, é como um assistente que executa pequenos trechos de código (funções) em resposta a eventos específicos. ( exemplo de eventos: solicitação http, upload de um arquivo no bucket ou alteração em um banco de dados) (**PaaS**)
 
@@ -223,12 +337,7 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 - **AWS Cost** - ferramenta de **análise de custos** que faz parte da AWS Management Console, exibe custos detalhados por conta. São custos já ocorridos. (**SaaS**) Aqui conseguimos ver serviço, conta vinculada, região...
 - **AWS Budgets ou Orçamentos** - Ferramenta que permite que você defina limites de gastos personalizados para os seus recursos. Também é possível **criar alerta para esses valores limite definidos**. (**SaaS**)
 
-### Armazenamentos:
-
-- **Amazon S3** - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. | `Aplicação`:  pode ser utilizado como: **Armazenamento de arquivos**, **Acesso e compartilhamento**, **Escalabilidade** pois podemos lidar com qualquer quantidade de dados, **Backup e recuperação**. ** produto principal (**SaaS**)
-- Amazon EBS
-- S3 Glacier
-- Família Snow
+- 
 
 ## Escalabilidade e elasticidade 
 
