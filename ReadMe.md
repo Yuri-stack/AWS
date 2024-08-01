@@ -121,6 +121,58 @@ nada apenas utilizar o serviço
 | Modelo PaaS                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
 | Modelo SaaS                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
 
+## IAM - Identity And Access Management
+
+Recurso para gerenciar os acessos e identidades no seu ambiente AWS, implementando segurança ao ambiente. Aqui podemos ter práticas que levam a uma maior segurança assim como algumas práticas também podem ser muito perigosas para o mesmo.
+
+O ideal para esse item, que pode ser considerado um item de segurança é que cada usuário tenha sua conta registrada e vinculada ao painel root que vai ser o dono do painel, vamos ver a seguir as boas práticas para o IAM e também como adicionar contas e configura-las entro do painel da AWS. Possui padrão PCI DSS de conformidade que é um padrão de requisitos necessários para segurança utilizada nas transações de cartão.
+
+## IAM - dicas
+
+O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua conta, algumas dicas que devemos nos atentar:
+
+- **Usuários possuem credenciais permanentes** e **funções possuem credenciais temporárias**
+- Usuários root não devem ser compartilhados
+- Use o **Least Privilege Principle** nos usuários - mínimo de privilégios necessários
+- Documentos Json definem as permissões de acesso
+- Grupos contém outros usuários, mas não podem conter outros grupos
+- Utilizar Multifator Authentication (MFA)
+- Criar politica para a criação de senha das contas associadas a root
+- É um serviço gratuito da AWS
+- Bloquear as chaves de acesso do usuário root
+- Criar usuários individuais do IAM
+- Criar grupos para atribuir permissão
+- Ver sobre conceitos básicos de uso de permissões com políticas gerenciadas
+- Usar políticas gerenciadas pelo cliente em vez de políticas gerenciadas em linha
+- Use níveis de acesso para revisar permissões
+- Use funções para aplicativos que são executados em instâncias do CS2
+- Use funções/roles para delegar permissões 
+- Troque de credenciais regularmente
+- Remova as credenciais desnecessárias
+- Monitorar as atividades em sua conta
+- integração com diversos serviços
+
+**Primeiro autentica - depois autoriza**
+
+> **Usuários** - pessoa ou serviço, com credenciais permanentes. Use o Least Privilege
+>
+> **Grupos** - coletivo de usuários (grupos não podem conter outros grupos)
+>
+> **Funções** - não são permissões é um método de autenticação temporária.
+
+### Como criar uma função/role de permissão de acesso a uma S3 em uma instância EC2
+
+1. No IAM clicar na opção Role ou função do menu
+2. Clicar em criar função
+3. Selecionar opção Serviço da AWS
+4. Selecionar opção EC2
+5. Opção EC2,allows EC2 instances to call AWS services on your behalf
+6. Botão próximo
+7. Informar qual o o objetivo do role/função exe: S3 full Access ou S3 Read Only Access
+8. Botão próximo
+9. Dar nome de fácil identificação da função
+10. Clicar em criar
+
 ## Computação
 
 Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servidores, onde podemos ter controle total de sistema operacional, versão, atualizações de Sistemas e outras aplicações ou ainda podemos apenas locar o espaço que vai ser hospedagem para aplicações, transferindo preocupações com o hardware e até mesmo podemos transferir as preocupações com atualizações de sistemas para a AWS, focando assim, na aplicação final. Abaixo vamos ver alguns serviços considerados serviços de computação:
@@ -570,23 +622,7 @@ Resultado esperado:
 
 ![img](https://cdn.discordapp.com/attachments/1123729724812841021/1124095698275680278/image.png)
 
-## IAM - dicas
-
-O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua conta, algumas dicas que devemos nos atentar:
-
-- **Usuários possuem credenciais permanentes** e **funções possuem credenciais temporárias**
-- Usuários root não devem ser compartilhados
-- Use o **Least Privilege Principle** nos usuários
-- Documentos Json definem as permissões de acesso
-- Grupos contém outros usuários, mas não podem conter outros grupos
-
-**Primeiro autentica - depois autoriza**
-
-> **Usuários** - pessoa ou serviço, com credenciais permanentes. Use o Least Privilege
->
-> **Grupos** - coletivo de usuários (grupos não podem conter outros grupos)
->
-> **Funções** - não são permissões é um método de autenticação temporária.
+> 
 
 ## WAF - dicas
 
