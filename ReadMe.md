@@ -267,20 +267,30 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
   Para o serviço S3 temos alguns tipos de classe de armazenamento que podem ser escolhidos conforme a necessidade do cliente, melhor performance ou melhor custo.
 
-  Dicionário do S3:
+  Para esse serviço a **AWS é responsável pela segurança da nuvem, proteção da infraestrutura e fornecer serviços que podem ser utilizados com segurança**, esta segurança e regularmente testada por auditores de terceiros.
 
+  Para esse serviço você é responsável pela segurança na nuvem, confidencialidade de seus dados, requisitos da sua organização, leis e regulamentos aplicáveis. Você deve:
+  
+  1. Gerenciar seus dados, propriedade de objetos e criptografia
+  
+  2. Classificar seus ativos
+  3. Gerenciar o acesso a seus dados com as funções do IAM
+4. Habilitar controles de detecção como o AWS CloudTrail ou Amazon GuardDuty
+  
+Dicionário do S3:
+  
   | Serviço | Descrição                                                    |
   | ------- | ------------------------------------------------------------ |
   | buckets | é o local onde estará armazenado seus objetos/arquivos/dados, tal qual um drive do seu computador ele tem um endereço, pode ser de acesso publico ou restrito |
   | objetos | tudo que podemos armazenar em um bucket é chamado objeto (fotos, arquivos, dados, backups, etc) |
   | keys    | referencia ao objeto dentro do bucket, essa key vai sempre indicar o **diretório + objeto** |
   | regiões | o serviço S3 é um **serviço regional** com visão global, ele é criado em uma região, pode ter redundância ou não dentro dessa região, mas ele é visto de dentro do ambiente AWS globalmente, por esse motivo seu bucket deve ter nome único. |
-
+  
   Classes de armazenamento S3:
-
-  | Classe                             | Descrição                                                    | Aplicação                                                    | Valor estimado(dolar)                                        | Redundância                   | Tipo de acesso                         |
+  
+| Classe                             | Descrição                                                    | Aplicação                                                    | Valor estimado(dolar)                                        | Redundância                   | Tipo de acesso                         |
   | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- | -------------------------------------- |
-  | S3 Standard                        | Alto nível de resiliência, disponibilidade e performance     | mídias utilizadas frequentemente por usuários;  Big Data - dados para análise em tempo real;<br />armazenar dados gerados pelo usuário em plataformas sociais | $0,023 a $0,021 por Gb                                       | sim                           | Imediato baixa lantência               |
+| S3 Standard                        | Alto nível de resiliência, disponibilidade e performance     | mídias utilizadas frequentemente por usuários;  Big Data - dados para análise em tempo real;<br />armazenar dados gerados pelo usuário em plataformas sociais | $0,023 a $0,021 por Gb                                       | sim                           | Imediato baixa lantência               |
   | S3 Intelligent Tiering (IT)        | Alto nível de resiliência, disponibilidade e performance, serviço com inteligência para reduzir automaticamente o custo movendo os objetos para uma classe mais acessível caso não seja muito acessado. No nível de acesso frequente é otimizado. Custo até 40% menor que o Standard para os arquivos pouco acessados, 60% para os arquivos raramente acessados.<br />30 dias sem acesso -> Infrequent Access<br />90 dias sem acesso -> Archive Instant Access<br />180 dias ou mais -> Deep Archive Access | Backups que podem ser acessados de forma irregular (urgente ou não); Dados que podem ter acesso de forma irregular<br />Dados que podem ter picos de acesso<br />vídeos de alta resolução com acesso imprevistos | 0,0025 por 1000 objetos  acesso frequente ou $0,00099 por Gb objetos acesso raro | sim                           | Imediato de baixa latência             |
   | S3 Express One Zone                | Alta performance, acesso de um milissegundo, aplicações sensível a alta latências. Até 50% mais barato que a Standard. Permite integração com o Sage Marker Model Training (IA de Machine Learn), Amazon Athenas  (IA de Machine Learn), Amazon EMR (IA de Machine Learn), e o AWS Glue (IA de melhoria da qualidade de dados)<br />Tem riscos de perda dos objetos uma vez que esta em uma única zona de disponibilidade | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br />Dados de projetos concluídos<br />Protótipos e versões antigas de software<br />Vídeos ou audios raramente acessados<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediato de baixa latência             |
   | S3 Standard IA(Infrequent Access)  | Armazenar dados de menor frequência de acesso, tem acesso rápido quando necessário.<br /> | Armazenar backups mensais ou anuais de sistemas e bases de dados que não são acessados regularmente;<br />Manter cópias de segurança de arquivos críticos;<br />Armazenar dados de transações financeiras ou registros de clientes que precisam ser retidos por um longo período;<br />Manter registros antigos de funcionários, folhas de pagamento, relatórios de desempenho e outros documentos relacionados a RH;<br />Manter cópias de materiais de marketing, publicações anteriores, vídeos de treinamento; | $0,0125 por Gb                                               | sim                           | Imediato de baixa latência             |
@@ -288,16 +298,20 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
   | Glacier Instant Retrieval          | Custo baixo para objetos raramente acessados, exige recuperação com baixa latência 68% mais barato que o Standard IA | Arquivos médicos; Recursos de mídia; Noticias; Arquivos gerados pelo usuário; | $0,004 por Gb                                                | sim                           | Imediato de baixa latência             |
   | Glacier Flexible Retrieval         | Baixo custo, 10% mais barato que o Glacier Instant Retrieval, arquivos acessados no máximo 2 vezes por ano e de forma assíncrona, flexibilidade para acessar grandes conjuntos de dados sem custo adicional.<br />Oferece criptografia para os objetos em repouso e SSL para objetos em transição | backup;                                                      | $0,0036 por Gb                                               | sim                           | configurável de minutos a horas        |
   | Amazon S3 Glacier Deep Archive     | a mais acessível em questão de valores, armazenamento para preservação digital de longo prazo, acesso de 1 a 2 vezes ao ano, tempo de armazenamento de 7 a 10 ou mais anos. | Serviços financeiros; Saúde; Setor público;                  | $0,00099 por Gb                                              | sim                           | até 12 horas para recuperar os objetos |
-
+  
   > valores podem sofrer alterações**
-
+  
   
 
-### Versionamento no S3
+### Versioning - Versionamento no S3
 
 Pode ser habilitado porém não pode ser desabilitado, uma vez acionado pode ser apenas pausado.
 
 Gera uma nova cópia/versão do arquivo a cada modificação que for armazenada, ideal para casos onde a versão precisa ser armazenada, pode gerar maior custo do bucket pela quantidade de objetos armazenada.
+
+Os objetos armazenados na S3 a partir do versionamento recebem um ID de versão exclusivo. Os que existiam recebem esse ID quando forem modificados por solicitações após a ativação do versionamento. Antes disso estes objetos estariam com ID nullo.
+
+
 
 ### Server Access Login S3
 
