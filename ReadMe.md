@@ -183,7 +183,7 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
   - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**:
 
-    - **Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso(por hora ou por segundo(Linux cobrado após 60 segundos)) , não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
+    - **On Demand - Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso, não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
 
       > *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
 
@@ -198,6 +198,8 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
       **Spot Instances**: até 90% desconto comparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço; não utilize para trabalhos críticos e banco de dados
 
       > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
+      >
+      > Utilizada para testes e em alguns casos ela é utilizado como Auto Scale
     
       
     
@@ -216,7 +218,7 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
     
       * para a instância dedicada, não teremos visibilidade de soquetes, núcleos e ids dos hosts, nem afinidade entre um host e a instância, nem inserção de instância específica nem como adicionar capacidade usando uma solicitação de alocação. 
     
-      > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.*
+      > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.* PODE-SE TER UMA INSTANCIA DEDICADA NO SEU HOST DEDICADO.
     
       - Uma instância dedicada EC2 é uma instância de máquina virtual (VM) que é executada em um host dedicado.
       - Embora a instância compartilhe o host dedicado com outras instâncias, essas instâncias pertencem à mesma conta AWS.
@@ -276,31 +278,31 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
   2. Classificar seus ativos
   3. Gerenciar o acesso a seus dados com as funções do IAM
 4. Habilitar controles de detecção como o AWS CloudTrail ou Amazon GuardDuty
-  
+
 Dicionário do S3:
-  
-  | Serviço | Descrição                                                    |
-  | ------- | ------------------------------------------------------------ |
-  | buckets | é o local onde estará armazenado seus objetos/arquivos/dados, tal qual um drive do seu computador ele tem um endereço, pode ser de acesso publico ou restrito |
-  | objetos | tudo que podemos armazenar em um bucket é chamado objeto (fotos, arquivos, dados, backups, etc) |
-  | keys    | referencia ao objeto dentro do bucket, essa key vai sempre indicar o **diretório + objeto** |
-  | regiões | o serviço S3 é um **serviço regional** com visão global, ele é criado em uma região, pode ter redundância ou não dentro dessa região, mas ele é visto de dentro do ambiente AWS globalmente, por esse motivo seu bucket deve ter nome único. |
-  
+
+| Serviço | Descrição                                                    |
+| ------- | ------------------------------------------------------------ |
+| buckets | é o local onde estará armazenado seus objetos/arquivos/dados, tal qual um drive do seu computador ele tem um endereço, pode ser de acesso publico ou restrito |
+| objetos | tudo que podemos armazenar em um bucket é chamado objeto (fotos, arquivos, dados, backups, etc) |
+| keys    | referencia ao objeto dentro do bucket, essa key vai sempre indicar o **diretório + objeto** |
+| regiões | o serviço S3 é um **serviço regional** com visão global, ele é criado em uma região, pode ter redundância ou não dentro dessa região, mas ele é visto de dentro do ambiente AWS globalmente, por esse motivo seu bucket deve ter nome único. |
+
   Classes de armazenamento S3:
-  
+
 | Classe                             | Descrição                                                    | Aplicação                                                    | Valor estimado(dolar)                                        | Redundância                   | Tipo de acesso                         |
-  | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- | -------------------------------------- |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- | -------------------------------------- |
 | S3 Standard                        | Alto nível de resiliência, disponibilidade e performance     | mídias utilizadas frequentemente por usuários;  Big Data - dados para análise em tempo real;<br />armazenar dados gerados pelo usuário em plataformas sociais | $0,023 a $0,021 por Gb                                       | sim                           | Imediato baixa lantência               |
-  | S3 Intelligent Tiering (IT)        | Alto nível de resiliência, disponibilidade e performance, serviço com inteligência para reduzir automaticamente o custo movendo os objetos para uma classe mais acessível caso não seja muito acessado. No nível de acesso frequente é otimizado. Custo até 40% menor que o Standard para os arquivos pouco acessados, 60% para os arquivos raramente acessados.<br />30 dias sem acesso -> Infrequent Access<br />90 dias sem acesso -> Archive Instant Access<br />180 dias ou mais -> Deep Archive Access | Backups que podem ser acessados de forma irregular (urgente ou não); Dados que podem ter acesso de forma irregular<br />Dados que podem ter picos de acesso<br />vídeos de alta resolução com acesso imprevistos | 0,0025 por 1000 objetos  acesso frequente ou $0,00099 por Gb objetos acesso raro | sim                           | Imediato de baixa latência             |
-  | S3 Express One Zone                | Alta performance, acesso de um milissegundo, aplicações sensível a alta latências. Até 50% mais barato que a Standard. Permite integração com o Sage Marker Model Training (IA de Machine Learn), Amazon Athenas  (IA de Machine Learn), Amazon EMR (IA de Machine Learn), e o AWS Glue (IA de melhoria da qualidade de dados)<br />Tem riscos de perda dos objetos uma vez que esta em uma única zona de disponibilidade | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br />Dados de projetos concluídos<br />Protótipos e versões antigas de software<br />Vídeos ou audios raramente acessados<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediato de baixa latência             |
-  | S3 Standard IA(Infrequent Access)  | Armazenar dados de menor frequência de acesso, tem acesso rápido quando necessário.<br /> | Armazenar backups mensais ou anuais de sistemas e bases de dados que não são acessados regularmente;<br />Manter cópias de segurança de arquivos críticos;<br />Armazenar dados de transações financeiras ou registros de clientes que precisam ser retidos por um longo período;<br />Manter registros antigos de funcionários, folhas de pagamento, relatórios de desempenho e outros documentos relacionados a RH;<br />Manter cópias de materiais de marketing, publicações anteriores, vídeos de treinamento; | $0,0125 por Gb                                               | sim                           | Imediato de baixa latência             |
-  | S3 One Zone IA (Infrequent Access) | Baixa latência e voltado para arquivos de baixa frequência de acesso. Voltado para dados recriáveis. Até 20% mais acessível que o Standard IA | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediado baixa latência                |
-  | Glacier Instant Retrieval          | Custo baixo para objetos raramente acessados, exige recuperação com baixa latência 68% mais barato que o Standard IA | Arquivos médicos; Recursos de mídia; Noticias; Arquivos gerados pelo usuário; | $0,004 por Gb                                                | sim                           | Imediato de baixa latência             |
-  | Glacier Flexible Retrieval         | Baixo custo, 10% mais barato que o Glacier Instant Retrieval, arquivos acessados no máximo 2 vezes por ano e de forma assíncrona, flexibilidade para acessar grandes conjuntos de dados sem custo adicional.<br />Oferece criptografia para os objetos em repouso e SSL para objetos em transição | backup;                                                      | $0,0036 por Gb                                               | sim                           | configurável de minutos a horas        |
-  | Amazon S3 Glacier Deep Archive     | a mais acessível em questão de valores, armazenamento para preservação digital de longo prazo, acesso de 1 a 2 vezes ao ano, tempo de armazenamento de 7 a 10 ou mais anos. | Serviços financeiros; Saúde; Setor público;                  | $0,00099 por Gb                                              | sim                           | até 12 horas para recuperar os objetos |
-  
+| S3 Intelligent Tiering (IT)        | Alto nível de resiliência, disponibilidade e performance, serviço com inteligência para reduzir automaticamente o custo movendo os objetos para uma classe mais acessível caso não seja muito acessado. No nível de acesso frequente é otimizado. Custo até 40% menor que o Standard para os arquivos pouco acessados, 60% para os arquivos raramente acessados.<br />30 dias sem acesso -> Infrequent Access<br />90 dias sem acesso -> Archive Instant Access<br />180 dias ou mais -> Deep Archive Access | Backups que podem ser acessados de forma irregular (urgente ou não); Dados que podem ter acesso de forma irregular<br />Dados que podem ter picos de acesso<br />vídeos de alta resolução com acesso imprevistos | 0,0025 por 1000 objetos  acesso frequente ou $0,00099 por Gb objetos acesso raro | sim                           | Imediato de baixa latência             |
+| S3 Express One Zone                | Alta performance, acesso de um milissegundo, aplicações sensível a alta latências. Até 50% mais barato que a Standard. Permite integração com o Sage Marker Model Training (IA de Machine Learn), Amazon Athenas  (IA de Machine Learn), Amazon EMR (IA de Machine Learn), e o AWS Glue (IA de melhoria da qualidade de dados)<br />Tem riscos de perda dos objetos uma vez que esta em uma única zona de disponibilidade | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br />Dados de projetos concluídos<br />Protótipos e versões antigas de software<br />Vídeos ou audios raramente acessados<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediato de baixa latência             |
+| S3 Standard IA(Infrequent Access)  | Armazenar dados de menor frequência de acesso, tem acesso rápido quando necessário.<br /> | Armazenar backups mensais ou anuais de sistemas e bases de dados que não são acessados regularmente;<br />Manter cópias de segurança de arquivos críticos;<br />Armazenar dados de transações financeiras ou registros de clientes que precisam ser retidos por um longo período;<br />Manter registros antigos de funcionários, folhas de pagamento, relatórios de desempenho e outros documentos relacionados a RH;<br />Manter cópias de materiais de marketing, publicações anteriores, vídeos de treinamento; | $0,0125 por Gb                                               | sim                           | Imediato de baixa latência             |
+| S3 One Zone IA (Infrequent Access) | Baixa latência e voltado para arquivos de baixa frequência de acesso. Voltado para dados recriáveis. Até 20% mais acessível que o Standard IA | Cópias secundárias de backup; <br />Dados de log raramente acessados;<br />Dados de histórico de atendimento<br /> | $0,16 por Gb                                                 | Armazenado em apenas uma zona | Imediado baixa latência                |
+| Glacier Instant Retrieval          | Custo baixo para objetos raramente acessados, exige recuperação com baixa latência 68% mais barato que o Standard IA | Arquivos médicos; Recursos de mídia; Noticias; Arquivos gerados pelo usuário; | $0,004 por Gb                                                | sim                           | Imediato de baixa latência             |
+| Glacier Flexible Retrieval         | Baixo custo, 10% mais barato que o Glacier Instant Retrieval, arquivos acessados no máximo 2 vezes por ano e de forma assíncrona, flexibilidade para acessar grandes conjuntos de dados sem custo adicional.<br />Oferece criptografia para os objetos em repouso e SSL para objetos em transição | backup;                                                      | $0,0036 por Gb                                               | sim                           | configurável de minutos a horas        |
+| Amazon S3 Glacier Deep Archive     | a mais acessível em questão de valores, armazenamento para preservação digital de longo prazo, acesso de 1 a 2 vezes ao ano, tempo de armazenamento de 7 a 10 ou mais anos. | Serviços financeiros; Saúde; Setor público;                  | $0,00099 por Gb                                              | sim                           | até 12 horas para recuperar os objetos |
+
   > valores podem sofrer alterações**
-  
+
   
 
 ### Versioning - Versionamento no S3
@@ -357,7 +359,13 @@ Aplicado por bucket uma lista de acesso, é o ultimo recurso a ser indicado para
 - **SSE-C** - Cliente fornece as chaves e armazena no bucket - pouco indicado
 - **CSE** - cliente fornece as chaves e armazena as mesmas fora do bucket - alto risco
 
+### Segurança em S3 Modo Governança
 
+Sistema de controle com flexibilidade para administradores, permite que usuário com esse perfil consigam alterar dados mesmo durante o período de contenção. Para ações onde se precisa de alto nível de proteção de dados mas ainda requer flexibilidade para os administradores.
+
+### Segurança em S3 Modo Conformidade
+
+É como um cofre inviolável, nem o usuário ADM consegue alterar algo até o período de contenção expirar. Ideal para atender requisitos regulatórios rigorosos onde os dados não podem ser modificados ou alterados antes de um tempo definido.
 
 ## AWS Elastic Beanstalk
 
@@ -717,7 +725,13 @@ Resultado esperado:
 
 ## Amazon DynamoDB
 
+## AWS GuardDuty
 
+Serviço AWS que monitora sua conta AWS em tempo real buscando acessos anônimos ou atividades suspeitas. Utiliza-se de Inteligência Artificial.
+
+## AWS Inspector
+
+Serviço da AWS que trabalha monitorando sua instancia em busca de não conformidades de segurança ou melhores práticas. Esta ligado ao princípio de conformidade, auditor de segurança. Identificar vulnerabilidades em instâncias.
 
 ## Dicionário AWS
 
