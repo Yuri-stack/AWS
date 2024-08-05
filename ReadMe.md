@@ -263,6 +263,42 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 9. dar nome de fácil identificação
 10. clicar em criar
 
+### EC2 Saving Plans
+
+Aqui vale lembrar que é um serviço que pode ser associado ao EC2, mas que também atende outros serviços. É um contrato de 1 a 3 anos que se aplica ao serviço de EC2, precisa especificar região, familia, Qualquer tamanho e Sistema Operacional. 
+
+### Estado da instância
+
+- inicia a instancia verifica IAM e fica em Pending -> Running
+- de Running podemos dar um shutdown -> Terminated
+- De Stopping ela vai para Stopped
+- Stooped -> Pending -> Running ou Terminated
+
+### Posicionamento de EC2
+
+Temos 3 opções em placement group
+
+- cluster - Região, AZ, monta a EC2 uma próxima a outra quase sempre no mesmo rack - melhor latência por estar no mesmo rack, alta taxa de transferência - aplica-se para Big Data e Aplicações paralelas.
+- Spread (Espelhar/Disseminar)  -  Região, AZ, monta a EC2 em racks diferentes - aplicações que precisam de alta disponibilidade e são críticas onde a falha de uma instância não deve afetar outras instâncias.
+- Partition (partição) -  Região, AZ, monta a EC2 em racks diferentes - útil para cargas de trabalho grandes e distribuídas, como Hadoop, HDFs e Cassandra, pois ajuda a reduzir o risco de falhas correlacionadas.
+
+### Rede EC2
+
+| Rede                                  | Descrição                                                    |
+| ------------------------------------- | ------------------------------------------------------------ |
+| ENI (Elastic Network Interface)       | Podemos conectar a várias subnets da mesma AZ(zona de disponibilidade), mas não consigo conectar em uma subnet de outra AZ. Possui IP privado e um público opcional. |
+| ENA (Elastic Network Adapter)         | Mais rápida que a ENI atende alguns tipos de instâncias ( tem ip privada e público opcional) |
+| EFA (Elastic Fabric Adapter)          | Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional) |
+| NAT (Network Adress Translate)        | Ajuda máquina ter solicitação pelo IP público, máscara o IP público para um privado permitindo receber respostas da internet - precisa habilitar para conseguir consumir da internet |
+| IP Elástico                           | É uma configuração de IP que permite reiniciar a máquina e não perder o IP público. Permite também migrar esse IP para outra máquina(OBS: ao terminar uma instância deve-se apagar o IP público caso não vá reutilizar para não gerar custos.) |
+| Subnet pública                        | tem saída para internet com o IGW internet Gatware           |
+| Subnet privada                        | não tem saída para internet diretamente, mas pode ter esse acesso através de um Bastion Host. |
+| Bastion Host ou Host Jump ou Jump Box | Utilizado como ponte de conexão instâncias de subnet privada. Essa instância é criada com Ip Público, configuramos a instância de IP Privado VPC(Virtual private Cloud), para ter acesso SSH e ou RDP ao Bastion Host. Por último configura-se o Bastion Host para um NAT Gateware, com as regras de acesso e fazendo uso apenas do consumo da internet sem se tornar disponível na internet (para as instâncias de Ip Privado) |
+| NAT Gateware                          | é bidirecional, permite o acesso da máquina a internet, mas também permite terceiros acessarem essa máquina a partir da internet. |
+| NAT Gateware                          | é habilitado dentro da subnet public e acionada na tabela de roteamento da private que ele sai pela NAT Gateware e que nada entra. Vantagens é poder atualizar instâncias privadas mantendo a sua segurança e centralizando apenas uma porta de entrada pública. |
+
+
+
 ## Armazenamentos:
 
 - **Amazon S3** (Amazon Simple Storage Service) - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. | `Aplicação`:  pode ser utilizado como: **Armazenamento de arquivos**, **Acesso e compartilhamento**, **Escalabilidade** pois podemos lidar com qualquer quantidade de dados, **Backup e recuperação**. ** produto principal (**SaaS**)
@@ -732,6 +768,10 @@ Serviço AWS que monitora sua conta AWS em tempo real buscando acessos anônimos
 ## AWS Inspector
 
 Serviço da AWS que trabalha monitorando sua instancia em busca de não conformidades de segurança ou melhores práticas. Esta ligado ao princípio de conformidade, auditor de segurança. Identificar vulnerabilidades em instâncias.
+
+## AWS Fargate
+
+Serviço Server Less para containers permite executar container sem se preocupar com a infraestrutura subjacente, integrado com ECS e EKS ideal para desenvolvedores que querem focar no app containerizado focando só no app e não na estrutura.
 
 ## Dicionário AWS
 
