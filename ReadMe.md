@@ -313,7 +313,7 @@ Temos 3 opções em placement group
 
 #### Características de uma VPC
 
-- podem ter subnets
+- podem ter subnets 
 - roteamento -> tabelas de roteamento
 - segurança -> grupos de segurança e lista de controle de acesso de rede(ACLs)
 
