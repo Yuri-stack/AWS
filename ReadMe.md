@@ -114,12 +114,12 @@ APP | Dados
 
 nada apenas utilizar o serviço
 
-| Modelo computacional           | Responsabilidade do Cliente                                  | Responsabilidade AWS                                         |
-| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Modelo tradicional on Premises | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Sistema Operacional<br />Firewall<br />Tratamento para Antivírus e invasões<br />Manutenção de Hardware<br />Manutenção e atualização de software<br />Manutenção de atualizações de programas<br />Segurança física<br />Segurança online<br />Backup<br />Chaves para os programas originais<br />Ter que pagar por uma nova estrutura caso precisar atender mais de uma região. | -                                                            |
-| Modelo IaaS                    | Escolha de Sistema Operacional<br />Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Manutenção de Softwares que forem implementados<br />Atualizações de software<br />Manutenção de atualizações de programas<br />Segurança online<br />Backup<br />Licenças dos programas (caso optar)<br />Escolha da região onde deseja ser atendido<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física |
-| Modelo PaaS                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
-| Modelo SaaS                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
+| Modelo computacional               | Responsabilidade do Cliente                                  | Responsabilidade AWS                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Modelo tradicional on Premises** | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Sistema Operacional<br />Firewall<br />Tratamento para Antivírus e invasões<br />Manutenção de Hardware<br />Manutenção e atualização de software<br />Manutenção de atualizações de programas<br />Segurança física<br />Segurança online<br />Backup<br />Chaves para os programas originais<br />Ter que pagar por uma nova estrutura caso precisar atender mais de uma região. | -                                                            |
+| **Modelo IaaS**                    | Escolha de Sistema Operacional<br />Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Manutenção de Softwares que forem implementados<br />Atualizações de software<br />Manutenção de atualizações de programas<br />Segurança online<br />Backup<br />Licenças dos programas (caso optar)<br />Escolha da região onde deseja ser atendido<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física |
+| **Modelo PaaS**                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
+| **Modelo SaaS**                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
 
 ## IAM - Identity And Access Management
 
@@ -127,7 +127,7 @@ Recurso para gerenciar os acessos e identidades no seu ambiente AWS, implementan
 
 O ideal para esse item, que pode ser considerado um item de segurança é que cada usuário tenha sua conta registrada e vinculada ao painel root que vai ser o dono do painel, vamos ver a seguir as boas práticas para o IAM e também como adicionar contas e configura-las entro do painel da AWS. Possui padrão PCI DSS de conformidade que é um padrão de requisitos necessários para segurança utilizada nas transações de cartão.
 
-## IAM - dicas
+### IAM - dicas
 
 O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua conta, algumas dicas que devemos nos atentar:
 
@@ -233,11 +233,11 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 > Resumo: **banco de dados - instância reservada**; **trazer sua licença on premisse para a AWS - Host dedicado**; **Ambiente de teste por curto período, picos de acesso ou homologação - Sob demanda**; **Computação extra - Instâncias Spot**;
 
-### Amazon EC2 Auto Scaling
+#### Amazon EC2 Auto Scaling
 
 - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Então você pode definir politicas de quando o servidor deve aumentar o seu potencial de entrega e quando deve voltar ao número normal de instancias atendendo. Dessa forma se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. Ele monitora as métricas e desempenho das instancias.
 
-### Segurança no EC2
+#### Segurança no EC2
 
 1. criar uma política de segurança(role/função) de acesso
 2. criar a instancia 
@@ -250,7 +250,7 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 > Evite uso de chaves de acesso, usar Role
 
-### Criar a função/role de acesso ao  EC2
+#### Criar a função/role de acesso ao  EC2
 
 1. no IAM clique em role ou função
 2. clicar em criar função
@@ -263,39 +263,81 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 9. dar nome de fácil identificação
 10. clicar em criar
 
-### EC2 Saving Plans
+#### EC2 Saving Plans
 
 Aqui vale lembrar que é um serviço que pode ser associado ao EC2, mas que também atende outros serviços. É um contrato de 1 a 3 anos que se aplica ao serviço de EC2, precisa especificar região, familia, Qualquer tamanho e Sistema Operacional. 
 
-### Estado da instância
+#### Estado da instância
 
 - inicia a instancia verifica IAM e fica em Pending -> Running
 - de Running podemos dar um shutdown -> Terminated
 - De Stopping ela vai para Stopped
 - Stooped -> Pending -> Running ou Terminated
 
-### Posicionamento de EC2
+#### Posicionamento de EC2
 
 Temos 3 opções em placement group
 
-- cluster - Região, AZ, monta a EC2 uma próxima a outra quase sempre no mesmo rack - melhor latência por estar no mesmo rack, alta taxa de transferência - aplica-se para Big Data e Aplicações paralelas.
-- Spread (Espelhar/Disseminar)  -  Região, AZ, monta a EC2 em racks diferentes - aplicações que precisam de alta disponibilidade e são críticas onde a falha de uma instância não deve afetar outras instâncias.
-- Partition (partição) -  Região, AZ, monta a EC2 em racks diferentes - útil para cargas de trabalho grandes e distribuídas, como Hadoop, HDFs e Cassandra, pois ajuda a reduzir o risco de falhas correlacionadas.
+- **Cluster** - Região, AZ, monta a EC2 uma próxima a outra quase sempre no mesmo rack - melhor latência por estar no mesmo rack, alta taxa de transferência - aplica-se para Big Data e Aplicações paralelas.
+- **Spread** (Espelhar/Disseminar)  -  Região, AZ, monta a EC2 em racks diferentes - aplicações que precisam de alta disponibilidade e são críticas onde a falha de uma instância não deve afetar outras instâncias.
+- **Partition** (partição) -  Região, AZ, monta a EC2 em racks diferentes - útil para cargas de trabalho grandes e distribuídas, como Hadoop, HDFs e Cassandra, pois ajuda a reduzir o risco de falhas correlacionadas.
 
-### Rede EC2
+#### Rede EC2
 
-| Rede                                  | Descrição                                                    |
-| ------------------------------------- | ------------------------------------------------------------ |
-| ENI (Elastic Network Interface)       | Podemos conectar a várias subnets da mesma AZ(zona de disponibilidade), mas não consigo conectar em uma subnet de outra AZ. Possui IP privado e um público opcional. |
-| ENA (Elastic Network Adapter)         | Mais rápida que a ENI atende alguns tipos de instâncias ( tem ip privada e público opcional) |
-| EFA (Elastic Fabric Adapter)          | Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional) |
-| NAT (Network Adress Translate)        | Ajuda máquina ter solicitação pelo IP público, máscara o IP público para um privado permitindo receber respostas da internet - precisa habilitar para conseguir consumir da internet |
-| IP Elástico                           | É uma configuração de IP que permite reiniciar a máquina e não perder o IP público. Permite também migrar esse IP para outra máquina(OBS: ao terminar uma instância deve-se apagar o IP público caso não vá reutilizar para não gerar custos.) |
-| Subnet pública                        | tem saída para internet com o IGW internet Gatware           |
-| Subnet privada                        | não tem saída para internet diretamente, mas pode ter esse acesso através de um Bastion Host. |
-| Bastion Host ou Host Jump ou Jump Box | Utilizado como ponte de conexão instâncias de subnet privada. Essa instância é criada com Ip Público, configuramos a instância de IP Privado VPC(Virtual private Cloud), para ter acesso SSH e ou RDP ao Bastion Host. Por último configura-se o Bastion Host para um NAT Gateware, com as regras de acesso e fazendo uso apenas do consumo da internet sem se tornar disponível na internet (para as instâncias de Ip Privado) |
-| NAT Gateware                          | é bidirecional, permite o acesso da máquina a internet, mas também permite terceiros acessarem essa máquina a partir da internet. |
-| NAT Gateware                          | é habilitado dentro da subnet public e acionada na tabela de roteamento da private que ele sai pela NAT Gateware e que nada entra. Vantagens é poder atualizar instâncias privadas mantendo a sua segurança e centralizando apenas uma porta de entrada pública. |
+| Rede                                      |                          Descrição                           |
+| ----------------------------------------- | :----------------------------------------------------------: |
+| **ENI (Elastic Network Interface)**       | Podemos conectar a várias subnets da mesma AZ(zona de disponibilidade), mas não consigo conectar em uma subnet de outra AZ. Possui IP privado e um público opcional. |
+| **ENA (Elastic Network Adapter)**         | Mais rápida que a ENI atende alguns tipos de instâncias ( tem ip privada e público opcional) |
+| **EFA (Elastic Fabric Adapter)**          | Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional) |
+| **NAT (Network Adress Translate)**        | Ajuda máquina ter solicitação pelo IP público, máscara o IP público para um privado permitindo receber respostas da internet - precisa habilitar para conseguir consumir da internet |
+| **IP Elástico**                           | É uma configuração de IP que permite reiniciar a máquina e não perder o IP público. Permite também migrar esse IP para outra máquina(OBS: ao terminar uma instância deve-se apagar o IP público caso não vá reutilizar para não gerar custos.) |
+| **Subnet pública**                        |      Tem saída para internet com o IGW internet Gatware      |
+| **Subnet privada**                        | Não tem saída para internet diretamente, mas pode ter esse acesso através de um Bastion Host. |
+| **Bastion Host ou Host Jump ou Jump Box** | Utilizado como ponte de conexão instâncias de subnet privada. Essa instância é criada com Ip Público, configuramos a instância de IP Privado VPC(Virtual private Cloud), para ter acesso SSH e ou RDP ao Bastion Host. Por último configura-se o Bastion Host para um NAT Gateware, com as regras de acesso e fazendo uso apenas do consumo da internet sem se tornar disponível na internet (para as instâncias de Ip Privado) |
+| **Internet Gateway**                      | É bidirecional, permite o acesso da máquina a internet, mas também permite terceiros acessarem essa máquina a partir da internet. |
+| **NAT Gateway**                           | É habilitado dentro da subnet public e acionada na tabela de roteamento da private que ele sai pela NAT Gateware e que nada entra. Vantagens é poder atualizar instâncias privadas mantendo a sua segurança e centralizando apenas uma porta de entrada pública. |
+| **VPC - Virtual Private Cloud**           | É uma rede virtual privada que permite criar e gerenciar recursos de infraestrutura na nuvem de forma isolada e segura. Com uma VPC você pode definir e controlar um ambiente de rede virtual completo, semelhante ao que você faria em um data center físico tradicional. Esse formato de rede permite comunicação entre instâncias, garante que um cliente não acesse as máquinas de terceiros, é criada por região, pode-se ter quantas forem necessárias, as AZs estão dentro da VPC, dentro das AZs temos as subnets, se comunicam entre si por tabela de roteamento, internet Gateway. |
+| **Transit Gateway**                       | Serviço que define como as VPC(Virtual Private Cloud) vão estar interligadas, com o Transit Gateway essa comunicação será feita através de um centralizador que vai estar servindo de ponto de comunicação a todas as VPCs ali configurados |
+| **Peering (pareamento) Connect**          | Aqui estamos tratando o modo raiz de estabelecer comunicação entre VPC, ligando uma VPC a outra diretamente sem o uso de um centralizador, forma de trabalho mais complexa. |
+| **Statefull**                             | Semelhante a um firewall - Uma única regra para acessar a VPN, o retorno dos dados para vc será gerenciado pela Security Group, comunicação da sua máquina com o servidor. (**PARA A INSTÂNCIA/ PLACA DE REDE, REGRA APENAS PARA A ENTRADA**) |
+| **Stateless**                             | Semelhante a um firewall - Aqui temos duas regras ao menos, a que define como vai ser o acesso e a que vai definir quem pode ter o retorno e como será o retorno dos dados. É utilizado o Access Control List (ACL) para definir as regras de acesso ao servidor. (**PARA A SUBNET - DEFINIR REGRAS PARA ENTRADA E SAÍDA DE DADOS**) |
+| **SG - Security Group**                   | pode-se aplicar a várias instâncias, **direto na placa de rede** ENI, se você criou a regra para permitir acesso, ao adicionar uma nova instância nesse VPC ela também já estará com as regras antes definidas. |
+| **VPC Endpoint**                          | Permite trafego local - aplicado ao S3 de uma instância por exemplo. Permite o acesso ao S3 sem sair para internet. |
+| **VPN - Virtual Private Network**         | VPN cliente : Permite conectar remotamente através de uma conexão segura (acesso remoto de uma máquina para a AWS)<br />VPN Site to Site: Empresa inteira conectada a AWS |
+| **CloudHub**                              | Serviço AWS onde várias filiais de uma empresa se conectam a AWS e estarão ligadas entre si, se comunicando entre si e com a AWS. |
+| **Scaling UP**                            | Vertical -> caso falhar, para tudo porque estamos falando de uma instância onde vamos escalar quantidade de memória Ram, processador... |
+| **Auto Scaling OUT**                      | Horizontal -> aumenta no sentido de redundância o número de instâncias que atendem sua demanda, faz isso automaticamente baseado nas informações do **AWS Cloud Watch**, e configurações do **AWS Launch Template** |
+| **AWS Cloud Watch**                       | Observa sua rede com as informações de consumo de recursos, máquinas que possam deixar de operar e é possível integrar com o Auto Scaling OUT para ter uma métrica de quando as novas instâncias devem ser ligadas para garantir que seu serviço se mantenha atendendo. |
+| **AWS Launch Template**                   | É um serviço da AWS onde podemos definir as configurações de máquinas/instâncias que podem ser implementadas na sua aplicação garantindo que seu serviço não pare de operar em alta demanda. |
+| **ELB Elastic Load Balancing**            | Distribui a carga entre os servidores/ instâncias conforme a demanda, também detecta caso alguma instância fique indisponível. Pode ser aplicado a camada 7(aplicação) **Aplication Load Balance **(ALB) onde se baseia no path para definir qual o servidor vai atender(exe: para o path /img -> servidor 3), também pode se basear no Host cobranca.host.com aponta a aplicação para um IP, Container ou Instância. Também temos o **Network Load Balancing** (NLB) que é baseado na camada 4 do OSI (Transporte), camada mais próxima do hardware, este modelo é mais simples de implementar, roteamento acontece por IP é mais rápido e tem melhor performance (baixa latência) |
+
+#### Características de uma VPC
+
+- podem ter subnets
+- roteamento -> tabelas de roteamento
+- segurança -> grupos de segurança e lista de controle de acesso de rede(ACLs)
+
+Gateways e Endpoints
+
+- Internet Gateway
+- Nat Gateway Instance
+- VPC Endpoint - para conexão privada e seguras a serviços AWS sem passar pela internet pública
+
+Conectividade:
+
+- **VPN Gateway** - permite conexão segura entre sua VPN e seu data center ou rede corporativa
+- **Direct Connect** - proporciona uma conexão de rede dedicada entre sua infraestrutura local e a AWS
+
+Benefícios:
+
+- isolamento - proporciona maior segurança
+- controle - pode-se incluir seleção de IPs, criar subnets configurar tabela de roteamento e outras configurações
+- escalabilidade - pode-se ajustar o tamanho e a configuração da VPN
+- segurança - regras de segurança granular permitem proteger suas instâncias.
+
+
+
+​	
 
 
 
