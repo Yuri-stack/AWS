@@ -335,12 +335,6 @@ Benefícios:
 - escalabilidade - pode-se ajustar o tamanho e a configuração da VPN
 - segurança - regras de segurança granular permitem proteger suas instâncias.
 
-
-
-​	
-
-
-
 ## Armazenamentos:
 
 - **Amazon S3** (Amazon Simple Storage Service) - é um serviço de armazenamento de objetos da AWS que permite armazenar e recuperar grandes quantidades de dados de maneira simples e escalável. Oferece local seguro e confiável para armazenar qualquer tipo de arquivo e dados de aplicativos... nessa estrutura os arquivos são chamados objetos e eles estarão organizados em recipientes chamados bucket. | `Aplicação`:  pode ser utilizado como: **Armazenamento de arquivos**, **Acesso e compartilhamento**, **Escalabilidade** pois podemos lidar com qualquer quantidade de dados, **Backup e recuperação**. ** produto principal (**SaaS**)
@@ -445,6 +439,105 @@ Sistema de controle com flexibilidade para administradores, permite que usuário
 
 É como um cofre inviolável, nem o usuário ADM consegue alterar algo até o período de contenção expirar. Ideal para atender requisitos regulatórios rigorosos onde os dados não podem ser modificados ou alterados antes de um tempo definido.
 
+## Banco de dados
+
+Banco de dados podem ser relacionais ou não relacionais. E cada um desses modelos tem como objetivo atender um determinado tipo de demanda.
+
+### Amazon RDS
+
+É um serviço que facilita a criação, operação e estabilidade de bancos de dados relacionais na nuvem. Permite que você escolha e configure facilmente um banco de dados relacional popular como MYSQL, PostgreSQL, Oracle, Sql Server entre outros sem necessidade de instalar ou gerenciar o software de banco de dados.  (**SaaS**) * * principal produto 
+
+### Tipos de banco de dados:
+
+#### Relacionais
+
+* contem estrutura em linhas, colunas e campos/células
+* multi AZ -> Desastre Recovery
+* Read Replica -> cópia idêntica apenas para leitura (recurso para melhorar tempo de acesso/leitura aos dados)
+
+#### Não Relacionais
+
+* Flexível em adicionar ou remover informações/dados
+
+### Elasticache
+
+Não é um banco de dados tradicional, é um serviço de cache na memória que deve ser utilizado em conjunto com um banco de dados seja este relacional ou não relacional. É uma ferramenta agnóstica ao tipo de banco de dados e trás benefícios de desempenho e escalabilidade. Voltado para sistemas onde a escalabilidade e latência são críticos. 
+
+* Aplicações de acesso rápido
+* Não possui disco é em memória
+* Utiliza In Memory Cache
+* Memory Cache (utiliza objetos para armazenar)
+* Redis(armazena Key Value e aceita multi AZ)
+
+> Aplicação: E-commerce para atender demandas altas como promoções ou feriados. Sistemas em tempo, como jogos online e sistemas de trading financeiro. Sessões de usuário e recomendações para usuários. Consultas complexas ou demoradas ao banco de dados.
+
+> Não se aplica:  se o sistema tem baixo tráfego, sistemas que fazem muitas operações de escrita e poucas leituras exemplo: login. Sistemas com dados voláteis ou de curta duração. Sistemas onde a consistência dos dados é crítica, como sistemas bancários. 
+
+### Aurora
+
+É um banco de dados que promete alta disponibilidade e rapidez dentro do modelo Relacional. Permite aumentar ou diminuir a capacidade da instância conforme necessário, com pouco ou nenhum tempo de inatividade.
+
+* AWS é proprietária
+* Suporta transações complexas.
+* Compatível com o o Mysql e PostgreSQL
+* 5 x mais rápida que outros bancos
+* 10 x mais barato
+* já inicia com 10Gb e Auto Scaling Automático
+* Uma base pode ter até 64Tb
+* Data base principal
+  * replicas : leitura até 15
+  * latência baixa
+  * recuperação point in time
+  * backup continuo -> distribuído em 3 zonas -> pode ser feito em um bucket
+  * alta disponibilidade de 99,99%
+
+> Aplicação: Sistemas financeiros, ERP, CRM.
+>
+> Não se aplica: aplicações que podem ter esquema de dados não fixo, sistemas com alto nível de escrita no banco de dados pode ter um gargalo nesse operação. 
+
+### DynamoDB
+
+**Amazon DynamoDB** - banco de dados **não relacional**, **serveless** ou seja em nuvem e se paga pelo que é consumido e não pelas instancias adquiridas. É escalável (ilimitado em armazenamento e taxa de transferência ), confiável tem **backup continuo** dos últimos 35 dias. É rápido e tem latência em microssegundos.
+
+- Banco de dados não relacional, No Sql
+- Mili segundos para acesso
+- Aplicações de alto desempenho
+- Key Value -> leitura de documentos
+- Muito utilizado para games
+- No mínimo 3 data centers
+- Strongly Consistent Reads < 1 segundo
+- SSD
+- Pode escalar Horizontalmente automaticamente. 
+- Atende muito bem Aplicações que tem necessidade de atender a mais de uma região, pois possui recursos como tabelas globais, que replica dados automaticamente entre regiões da AWS.
+
+> Aplicação - Ecommerce, Games, Mobile ou IoT. Sistemas com consultas mais simplificadas e sem muitos dados binários.
+>
+> Não se aplica:  quando requer consultas complexas.
+
+> OBS: o **Consistent Read** é i tempo delay entre a gravação do dado e a leitura do mesmo. Aqui temos o Strongly Consistent Reads que leva esse tempo de resposta para dados recém gravados para menos de 1 segundo.
+
+### Redshift
+
+É um serviço de banco de dados relacional, voltado para lidar com grandes volumes de dados e realizar consultas analíticas em grandes conjuntos de dados para relatórios,análises e insights.
+
+* Serviço de WareHouse(armazenagem)
+* Ideal para executar consultas com Joins e processamento de grandes volumes de dados em tempo hábil.
+* Pode-se escalar facilmente adicionar ou remover nós de cluster
+* Compatível com o modelo de negocio BI. Fácil de integrar com aplicações de BI.
+* Formado de colunas
+* Dados com grande quantidade de itens (muitos dados)
+* Compressão de dados
+* Inicia com 160 Gb
+* Single Node (uma instância)
+* Compute Mode(!28 instâncias)
+* Leitura em várias Databases MMP (Massive Paralel Processing)
+* Não é Multi AZ
+* AWS pode gerenciar automaticamente as rotinas de backups, replicas e outros.
+
+> Aplicação: Sistemas de BI (business intelligence), sistemas com consultas complexas, onde o volume de dados pode atingir Pentabytes.
+>
+> Não se aplica: aplicações que não atingem essa complexidade de dados, ou empresas de pequeno porte pode ser um custo não justificado. Exige uma boa estrutura de dados e planejamento(modelagem de dados). Sistemas de dados em tempo real.
+
 ## AWS Elastic Beanstalk
 
 - é um serviço que serve de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
@@ -469,11 +562,6 @@ Sistema de controle com flexibilidade para administradores, permite que usuário
 - **AWS Cloud Formation** - é um serviço que oferece uma linguagem comum para que você possa descrever e fornecer todos os recursos de infraestrutura em um ambiente de nuvem. permite que você utilize um arquivo de texto para modelar um ambiente em nuvem (json ou Yaml por exemplo). Paga pelos recursos que configurou e não pelo Cloud formation. É uma forma de trabalho que ajuda a manter uma organização na estruturação da sua nuvem, ele oferece formas de acesso (AWS `Command Line Interface`, `Gerenciador de console AWS` ou `SDKs`) onde vc escolher um template (modelo pra gerar uma estrutura ) ou criar sua própria template - que vai gerar sua Stack (que é uma pilha de comandos para gerar suas instancias e configurações), **permite replicar uma configuração em nuvem várias vezes e ter um gerenciamento de versões e alterações**.
 - **AWS Config** - Responsável por gerenciar mudanças, auxilia nas auditorias, compliance. Permite acessar, auditar e avaliar as configurações dos recursos da AWS. Restrito a uma região, configura-se regras(checklist). Notificação por Amazon SMS caso tenha sido contratado, armazena os dados em um bucket S3. 
 - **AWS CloudTrail** - é um serviço que possibilita a governança, conformidade, auditoria operacional e auditoria de riscos em sua conta AWS, **diferença entre ele e o CloudWatch é que o CloudWatch tem foco em desempenho e o CloudTrail é conformidade e auditoria** (**trilha de como foi feito e quem quando e tudo em log**). Podemos criar uma trilha para acompanhar alguma ação ou ainda no Dashboard teremos uma visão geral, ele mantem 90 dias de histórico e pode-se criar a trilha para acompanhar por mais de 90 dias. Ideal para acompanhar que alterou ou deletou algum serviço.
-
-### Banco de dados
-
-- **Amazon RDS** - é um serviço que facilita a criação, operação e estabilidade de bancos de dados relacionais na nuvem. Permite que você escolha e configure facilmente um banco de dados relacional popular como MYSQL, PostgreSQL, Oracle, Sql Server entre outros sem necessidade de instalar ou gerenciar o software de banco de dados.  (**SaaS**) * * principal produto 
-- **Amazon DynamoDB** - banco de dados não relacional, serveless ou seja em nuvem e se paga pelo que é consumido e não pelas instancias adquiridas. É escalável (ilimitado em armazenamento e taxa de transferência ), confiável tem backup continuo dos últimos 35 dias. É rápido e tem latência em microssegundos.
 
 ### Segurança, identidade e compliance:
 
@@ -518,8 +606,6 @@ Benefícios do Auto Scaling:
 - **Elasticidade** - aumentar/ diminuir recursos computacionais(memória, armazenamento...)
 
 
-
-- 
 
 ## Serviços Globais e Regionais
 
