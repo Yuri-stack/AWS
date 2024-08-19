@@ -375,8 +375,6 @@ Dicionário do S3:
 
   > valores podem sofrer alterações**
 
-  
-
 ### Versioning - Versionamento no S3
 
 Pode ser habilitado porém não pode ser desabilitado, uma vez acionado pode ser apenas pausado.
@@ -384,8 +382,6 @@ Pode ser habilitado porém não pode ser desabilitado, uma vez acionado pode ser
 Gera uma nova cópia/versão do arquivo a cada modificação que for armazenada, ideal para casos onde a versão precisa ser armazenada, pode gerar maior custo do bucket pela quantidade de objetos armazenada.
 
 Os objetos armazenados na S3 a partir do versionamento recebem um ID de versão exclusivo. Os que existiam recebem esse ID quando forem modificados por solicitações após a ativação do versionamento. Antes disso estes objetos estariam com ID nullo.
-
-
 
 ### Server Access Login S3
 
@@ -537,6 +533,26 @@ Não é um banco de dados tradicional, é um serviço de cache na memória que d
 > Aplicação: Sistemas de BI (business intelligence), sistemas com consultas complexas, onde o volume de dados pode atingir Pentabytes.
 >
 > Não se aplica: aplicações que não atingem essa complexidade de dados, ou empresas de pequeno porte pode ser um custo não justificado. Exige uma boa estrutura de dados e planejamento(modelagem de dados). Sistemas de dados em tempo real.
+
+## Serviços AWS
+
+### Route 53
+
+* Consegue dividir o trafego de DNS web definindo melhor servidor para entregar
+* Roteia as querys DNS para servidores mais próximos no caso de se ter mais de uma instancia atendendo.
+* Aplicação de políticas de geolocalização.
+* Zonas Hospedadas: seu domínio no valor de 50centavos para os primeiros 25 domínios
+* Dentro de zonas, criamos os registros A(sites) e MX(e-mail)
+* Hosted Zones:
+  * **Hosted zones públicas**: para sites e endereços públicos.
+  * **Hosted zones privadas**: para conexões internas, como conexão com banco de dados, instancias onde se deseja usar um endpoint no lugar de ip do serviço.
+* Politicas de roteamento:
+  * **Simple Routing** - Roteamento simples - aplicação sites simples, com um único servidor ou aplicações onde todo o tráfego deve ser direcionado para um único recurso. *Desvantagens: se o recurso falhar o tráfego será perdido.*
+  * **Weighted (ponderado)** - divide o trafego de chamadas no esquema um acesso para A, um acesso para B... também pode ser aplicado quando se deseja utilizar uma canary releases- pequena porção do trafego ser direcionado para uma nova versão da aplicação. *Desvantagens: necessita de monitoramento constante, se o recurso falhar o Route 53 não redireciona automaticamente*.
+  * **Geo Location** - divide por localização, a requisição para para o host mais próximo. Aplicações que necessitam atender leis e dados regionais, oferta de serviços conforme a região. *Desvantagens: pode resultar em uma experiência inconsistente se a localização não for precisa, mais complexo de ser implementado.*
+  * **Geo proximity** - mais especifico além de entregar a requisição para o host mais próximo avalia também o ajuste de preferência de roteamento para a localização específica. Aplicações que querem dar preferência a uma região específica, desejam controlar a quantidade de tráfego de cada região. *Desvantagens: requer mais gerenciamento e ajustes manuais para otimização, pode ser difícil prever como as alterações de proximidade afetarão a distribuição de tráfego.*
+  * **Latência** - menor tempo de resposta, envia o usuário para o host de menor latência. Aplicações globais onde a experiência do usuário depende de baixa latência. Desvantagens: requer que os recursos estejam distribuídos geograficamente.
+  * **Failover** - ativo-passivo verifica se o servidor pode atender se o mais próximo cair ele manda para ao próximo mais perto. Em outras palavras, permite que se defina um recurso primário e um para backup, se o primário falhar ele direciona o tráfego para o recurso de backup. Utilizar para aplicações que requer alta disponibilidade. *Desvantagens: depende da configuração e monitoramento adequado do health check. Se todos os tráfegos falharem, o tráfego será perdido.*
 
 ## AWS Elastic Beanstalk
 
