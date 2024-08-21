@@ -554,6 +554,53 @@ Não é um banco de dados tradicional, é um serviço de cache na memória que d
   * **Latência** - menor tempo de resposta, envia o usuário para o host de menor latência. Aplicações globais onde a experiência do usuário depende de baixa latência. Desvantagens: requer que os recursos estejam distribuídos geograficamente.
   * **Failover** - ativo-passivo verifica se o servidor pode atender se o mais próximo cair ele manda para ao próximo mais perto. Em outras palavras, permite que se defina um recurso primário e um para backup, se o primário falhar ele direciona o tráfego para o recurso de backup. Utilizar para aplicações que requer alta disponibilidade. *Desvantagens: depende da configuração e monitoramento adequado do health check. Se todos os tráfegos falharem, o tráfego será perdido.*
 
+### CloudFront
+
+É um serviço AWS de rede de fornecimento de conteúdo CDN criado para alta performance. É um serviço global que distribui em proxy de servidores.
+
+Estrutura de um conteúdo disponibilizado com CloudFront:
+
+**Usuário** > Camada de **AWS Shield**(protege contra ataques DDos) e **AWS WAF**(firewall) > conforme a localização do usuário será direcionado para um **Edge Location** ou ponto de acesso de borda da AWS > acesso ao Cache com conteúdo > conteúdo que pode ser atualizado e que vem de uma **EC2** ou **S3** por exemplo.
+
+Como podemos ver no fluxo acima o conteúdo não é armazenado em um CloudFront e sim conforme a demanda é feita apenas um cache do conteúdo o que torna o mesmo mais perto do usuário final e permite que o mesmo não sinta uma grande latência ao acessa-lo. Mas sempre que o conteúdo for atualizado, acessado pela primeira vez, será necessário resgata-lo do seu local de origem, seja esse loca um bucket S3 ou uma Instância EC2. Também poderíamos estar tratando aqui conteúdo vindo de um Gateway, Elastic Load Balancing, AWS Media Services, AWS Elemental ou de um servidor on-premises(local dentro de uma empresa privada).
+
+* Responsável por diminuir latência.
+* Replica nas Edges Locations o conteúdo em cache
+* CloudFront Origins OAI(Origins Access Indentity) é o recurso que o CloudFront utiliza para acessar a origem do seu conteúdo de forma segura. Isso permite que apenas o CloudFront consiga acessar esse conteúdo em sua origem o usuário sempre vai precisar acessa-lo pelo CloudFront.
+* Nome da URL vai conter o cloudfront.net
+
+### EBS Multi-atach (Elastic Block Store)
+
+É um serviço de armazenamento em bloco da AWS. Ele oferece volumes de armazenamento persistente para instâncias do Amazon EC2, banco de dados(RDS). Armazenamento bruto em nível de bloco.
+
+* até 16 instancias aceita apenas o Io1, instancias do tipo Nitro)
+* Dados continuam mesmo quando a EC2 é interrompida ou desligada.
+* Você pode mudar a capacidade ou tipo de volume conforme necessário.
+* Sempre da mesma AZ da EC2
+* São replicados automaticamente dentro da zona de disponibilidade que estão.
+* Move através do Snapshot
+* Tipos de EBS:
+  * SSD + rápido e + caro
+  * HDD + lento e + barato (descontinuado)
+* Uso Geral, volumes equilibrados adequados para uma ampla gama de workloads:
+  * Tipo GP2 - SSD
+  * Tipo GP3 - SSD
+* Provisionado Iops, requerem alta performance como banco de dados
+  * io1
+  * io2
+* Magnetic, opções de baixo custo para armazenamento de dados menos acessados.
+  * sc1
+  * st1
+* Otimizado para taxa de transferência 
+* Cold HDD - baixo custo - pouco acesso
+* Snapshot - São cópias de um Snapshot que pode ser para outra região - utilizado tbm para backup
+
+> Aplicação: **Hospedagem de websites**, **banco de dados**, **backup e recuperação de desastres**, execução de aplicações que requerem **baixa latência e alta IOPS**(input output operations per second)
+
+
+
+
+
 ## AWS Elastic Beanstalk
 
 - é um serviço que serve de tudo que é necessário para executar o seu aplicativo com segurança e eficiência na AWS, você só precisa levar o código do seu aplicativo e coloca-ló dentro desse ambiente. (**PaaS**)
