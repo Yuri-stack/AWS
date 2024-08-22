@@ -573,7 +573,7 @@ Como podemos ver no fluxo acima o conteúdo não é armazenado em um CloudFront 
 
 É um serviço de armazenamento em bloco da AWS. Ele oferece volumes de armazenamento persistente para instâncias do Amazon EC2, banco de dados(RDS). Armazenamento bruto em nível de bloco.
 
-* até 16 instancias aceita apenas o Io1, instancias do tipo Nitro)
+* até 16 instancias aceita apenas o Io1, instancias do tipo Nitro
 * Dados continuam mesmo quando a EC2 é interrompida ou desligada.
 * Você pode mudar a capacidade ou tipo de volume conforme necessário.
 * Sempre da mesma AZ da EC2
