@@ -599,6 +599,14 @@ Como podemos ver no fluxo acima o conteúdo não é armazenado em um CloudFront 
 
 
 
+## Arquitetura AWS
+
+A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
+
+- **Presentation tier (apresentação)**: é a camada mais próxima do usuário, pode ser a camada de front end no caso de uma aplicação web, ou o Cloudfront no caso de um servidor de conteúdos. Para essa camada teremos o Amazon Cognito(serviço de login), o Cloudfront, Aws Amplify(ferramenta para front-end) e Route 53.
+- **Logic Tier (lógica)**: é a camada de regras de negócio e/ou crud por exemplo, é a segunda camada após a mais próxima do usuário. como um bucket do S3 ou o backend de uma aplicação web. Para essa aplicação temos como exemplo os serviços de AWS Lambda, Amazon e Api Gateway
+- **Data Tier(Data):** é a camada mais distante do usuário, geralmente pode ser um banco de dados onde o que foi processado pelo backend será armazenado.
+
 
 
 ## AWS Elastic Beanstalk
