@@ -79,7 +79,7 @@ A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
 - **Presentation tier (apresentação)**: é a camada mais próxima do usuário, pode ser a camada de front end no caso de uma aplicação web, ou o Cloudfront no caso de um servidor de conteúdos. Para essa camada teremos o Amazon Cognito(serviço de login), o Cloudfront, Aws Amplify(ferramenta para front-end) e Route 53.
 - **Logic Tier (lógica)**: é a camada de regras de negócio e/ou crud por exemplo, é a segunda camada após a mais próxima do usuário. como um bucket do S3 ou o backend de uma aplicação web. Para essa aplicação temos como exemplo os serviços de AWS Lambda, Amazon e Api Gateway
 - **Data Tier(Dados):** é a camada mais distante do usuário, geralmente pode ser um banco de dados onde o que foi processado pelo backend será armazenado.
-- ![02](./images/02.png)
+- ![Arquitetura AWS](./images/02.png)
 
 ## Responsabilidade compartilhada
 
@@ -131,6 +131,8 @@ nada apenas utilizar o serviço
 | **Modelo IaaS**                    | Escolha de Sistema Operacional<br />Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Manutenção de Softwares que forem implementados<br />Atualizações de software<br />Manutenção de atualizações de programas<br />Segurança online<br />Backup<br />Licenças dos programas (caso optar)<br />Escolha da região onde deseja ser atendido<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física |
 | **Modelo PaaS**                    | Escolha de recursos de hardware/recursos<br />Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br /><br />Atualizações dos programas implementados<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br /><br />Licença do Sistema operacional (caso optar) |
 | **Modelo SaaS**                    | Escolha de estrutura de segurança<br />Segurança online<br />Escolha de melhor solução<br /><br />Configuração de backup e redundância<br />Replicar serviços em mais de uma região sem custo de hardware, prédio... | Infraestrutura<br />Rede<br />Computadores/Servidores (escolha e implementação)<br />Segurança física<br />Manutenção e implementação de Sistema Operacional <br />Manutenção e implementação da solução operando para ser apenas utilizada<br />Licença dos programas (caso optar) |
+
+![Responsabilidade compartilhada](./images/03.JPG)
 
 ## IAM - Identity And Access Management
 
