@@ -4,6 +4,8 @@ Computação na nuvem é o termo que utilizamos para serviços e plataformas que
 
 Para melhor aproveito do material, esta sendo implementado nesse momento um dicionário de termos, sinta-se a vontade em contribuir sua dúvida ou observação sobre o mesmo através da rede social: https://www.linkedin.com/in/hernandesjacque/ e/ou e-mail: ti.jacque@gmail.com ou pull request.
 
+![On premise x cloud](.\images\01.JPG)
+
 Temos aqui alguns serviços tais como: 
 
 - computação
@@ -69,6 +71,14 @@ Ao contratar um serviço AWs a ideia será sempre ver qual a região mais próxi
 4. **Economies of Scale** - quanto mais empresas contratam um serviço na AWS mais esse recurso ficará com valor mais acessível pois a AWS "repassa" essa escala de maneira a melhorar o valor cobrado.
 5. **Increase Speed and Agility** - enquanto em um rede local você demora para subir um novo serviços, na nuvem isso é resolvido em poucos cliques. Temos também facilidade em montar ambientes de testes que podem ser excluídos após os testes, por exemplo.
 6. **Go Global** - Sua aplicação pode ser disponibilizada em diversas regiões no globo, diminuindo a latência do serviço. Torne-se global em minutos.
+
+## Arquitetura AWS
+
+A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
+
+- **Presentation tier (apresentação)**: é a camada mais próxima do usuário, pode ser a camada de front end no caso de uma aplicação web, ou o Cloudfront no caso de um servidor de conteúdos. Para essa camada teremos o Amazon Cognito(serviço de login), o Cloudfront, Aws Amplify(ferramenta para front-end) e Route 53.
+- **Logic Tier (lógica)**: é a camada de regras de negócio e/ou crud por exemplo, é a segunda camada após a mais próxima do usuário. como um bucket do S3 ou o backend de uma aplicação web. Para essa aplicação temos como exemplo os serviços de AWS Lambda, Amazon e Api Gateway
+- **Data Tier(Data):** é a camada mais distante do usuário, geralmente pode ser um banco de dados onde o que foi processado pelo backend será armazenado.
 
 ## Responsabilidade compartilhada
 
@@ -599,13 +609,7 @@ Como podemos ver no fluxo acima o conteúdo não é armazenado em um CloudFront 
 
 
 
-## Arquitetura AWS
-
-A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
-
-- **Presentation tier (apresentação)**: é a camada mais próxima do usuário, pode ser a camada de front end no caso de uma aplicação web, ou o Cloudfront no caso de um servidor de conteúdos. Para essa camada teremos o Amazon Cognito(serviço de login), o Cloudfront, Aws Amplify(ferramenta para front-end) e Route 53.
-- **Logic Tier (lógica)**: é a camada de regras de negócio e/ou crud por exemplo, é a segunda camada após a mais próxima do usuário. como um bucket do S3 ou o backend de uma aplicação web. Para essa aplicação temos como exemplo os serviços de AWS Lambda, Amazon e Api Gateway
-- **Data Tier(Data):** é a camada mais distante do usuário, geralmente pode ser um banco de dados onde o que foi processado pelo backend será armazenado.
+- 
 
 
 
