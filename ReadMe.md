@@ -197,27 +197,35 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 ### EC2
 
-Serviço que permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
+![EC2 - instâncias](./images/06.gif)
+
+Serviço que permite criar instâncias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
 
 - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**:
 
   - **On Demand - Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso, não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
 
     > *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
-
   
+    
+  
+  ![On Demand](./images/07.jpg)
   
   - **Instancias reservadas**: Até 75% de desconto em comparação ao modelo por demanda, aplicações que exigem capacidade reservada, comprometimento de uso da instância por um período de 1 ou 3 anos, possui pagamento adiantado;
-  
+
     > *Aplica-se para ambiente de produção que foi testado e não será modificado, aplicações que precisar ser estado constante, excelente para banco de dados*;
 
+    ![Instâncias Reservadas](./images/08.jpg)
+
     
-
+  
     **Spot Instances**: até 90% desconto comparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço; não utilize para trabalhos críticos e banco de dados
-
+  
     > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
     >
     > Utilizada para testes e em alguns casos ela é utilizado como Auto Scale
+  
+    ![Instância Spot](./images/09.jpg)
   
     
   
@@ -229,6 +237,8 @@ Serviço que permite criar instancias computacionais, que podem ser comparadas c
     - Isso significa que você tem controle total sobre o hardware subjacente e não compartilha recursos físicos com outras contas AWS.
     - Os hosts dedicados são uma opção quando você precisa de um alto nível de isolamento para atender a requisitos específicos de conformidade ou segurança.
     - Eles podem ser caros, pois você paga pela capacidade do host dedicado, independentemente de quantas instâncias EC2 são executadas nele.
+  
+    ![Host Dedicado](./images/10.jpg)
   
     
   
@@ -243,6 +253,8 @@ Serviço que permite criar instancias computacionais, que podem ser comparadas c
     - Isso fornece um nível mais alto de isolamento em comparação com as instâncias EC2 padrão, que podem compartilhar hardware com outras contas AWS.
     - As instâncias dedicadas EC2 são úteis quando você deseja garantir que suas VMs estejam em um ambiente mais isolado, mas não precisa de um host dedicado completo.
     - O custo de uma instância dedicada EC2 é geralmente menor do que o de um host dedicado, pois você paga apenas pelas instâncias que utiliza.
+    
+    ![Instância Dedicada](./images/11.jpg)
 
 > Possui famílias/ tipo de instancia para melhor atender casos e necessidades, exemplo: 
 > **Família A**,T,M,MAC para uso geral, servidores, homologação e repositórios de códigos. 
@@ -254,6 +266,8 @@ Serviço que permite criar instancias computacionais, que podem ser comparadas c
 #### Amazon EC2 Auto Scaling
 
 - serviço que ajuda a garantir que o contratante tenha a quantidade certa de servidores virtuais (instancias) em funcionamento para lidar com a carga de trabalho do seu aplicativo de forma automática. Então você pode definir politicas de quando o servidor deve aumentar o seu potencial de entrega e quando deve voltar ao número normal de instancias atendendo. Dessa forma se a demanda aumentar ele automaticamente vai incluir novos servidores/ instancias para atender essa demanda, se a demanda cair ele vai eliminar o número excedente de servidores para manter um melhor custo para o contratante. Ele monitora as métricas e desempenho das instancias.
+
+![Auto Scaling](./images/12.jpg)
 
 #### Segurança no EC2
 
