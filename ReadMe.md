@@ -82,6 +82,8 @@ A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
 
 ![Arquitetura AWS](./images/02.png)
 
+![Exemplo de uma aplicação web na arquitetura AWS](./images/05.JPG)
+
 ## Responsabilidade compartilhada
 
 É o conceito onde a AWS assume a sua parte de responsabilidade no serviço e o Arquiteto/ ou pessoa responsável pela implementação dentro da empresa ficará responsável pelas configurações e toda a parte que lhe cabe. 
@@ -195,54 +197,52 @@ Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servid
 
 ### EC2
 
+Serviço que permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
 
+- Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**:
 
-- permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
+  - **On Demand - Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso, não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
 
-  - Dentro desse serviço teremos alguns tipos de inicializadores (ou Launch Types) que estão em 4: **Sob Demanda**; **Instâncias Spot**; **Instâncias Reservadas**; **Host e Instancia Dedicada**:
+    > *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
 
-    - **On Demand - Sob Demanda**: alto custo se utilizado a longo prazo - aplica-se a projetos de curto prazo, cobrança é realizada conforme o uso, não tem compromisso de uso, não se aplica pagamento adiantado, Pode-se aumentar ou diminuir a capacidade computacional a qualquer momento. 
-
-      > *Aplica-se quando possui cargas de trabalho de curto prazo, validar hipóteses, com pico de utilização imprevisível, testar e experimentar um ambiente*;
-
-    
-    
-    - **Instancias reservadas**: Até 75% de desconto em comparação ao modelo por demanda, aplicações que exigem capacidade reservada, comprometimento de uso da instância por um período de 1 ou 3 anos, possui pagamento adiantado;
-    
-      > *Aplica-se para ambiente de produção que foi testado e não será modificado, aplicações que precisar ser estado constante, excelente para banco de dados*;
   
-      
   
-      **Spot Instances**: até 90% desconto comparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço; não utilize para trabalhos críticos e banco de dados
+  - **Instancias reservadas**: Até 75% de desconto em comparação ao modelo por demanda, aplicações que exigem capacidade reservada, comprometimento de uso da instância por um período de 1 ou 3 anos, possui pagamento adiantado;
+  
+    > *Aplica-se para ambiente de produção que foi testado e não será modificado, aplicações que precisar ser estado constante, excelente para banco de dados*;
 
-      > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
-      >
-      > Utilizada para testes e em alguns casos ela é utilizado como Auto Scale
     
-      
+
+    **Spot Instances**: até 90% desconto comparado a instâncias sob demanda; São terminadas quando o preço spot, é maior do que o preço que você estabeleceu para pagar; Memorize como leilão de instâncias; terminate = preço spot da AWS>seu preço; não utilize para trabalhos críticos e banco de dados
+
+    > *Aplica-se quando você tem urgência de grande capacidade computacional, workloads que podem parar e serem iniciados novamente, trabalhos em lote, análise de dados, processamento de imagens.*
+    >
+    > Utilizada para testes e em alguns casos ela é utilizado como Auto Scale
+  
     
-    - **Host Dedicado**: Hardware dedicado, servidor físico E2C Exclusivo para você, cumprir requisitos de conformidade, visibilidade de soquetes/ núcleos/Ids de hosts, Comprometimento por um período de 3 anos, pode ser comprado sob demanda de horas, se optar por reserva até 70% de desconto em comparação com instâncias por demanda;
+  
+  - **Host Dedicado**: Hardware dedicado, servidor físico E2C Exclusivo para você, cumprir requisitos de conformidade, visibilidade de soquetes/ núcleos/Ids de hosts, Comprometimento por um período de 3 anos, pode ser comprado sob demanda de horas, se optar por reserva até 70% de desconto em comparação com instâncias por demanda;
+  
+    > *Aplica-se quando deseja vincular licenças de software, como Windows Server, SQL Server e Suse Linux Enterprise Server. Podemos citar exemplos de casos de aplicação onde os requisitos de conformidade são mais rigorosos(PCI DSS, HIPAA...) garantindo maior segurança e reduzindo riscos de vazamento de dados,  Cargas de trabalho altamente sensíveis- informações confidenciais*. 
+  
+    - Um host dedicado EC2 é um servidor físico dedicado exclusivamente a uma única conta AWS.
+    - Isso significa que você tem controle total sobre o hardware subjacente e não compartilha recursos físicos com outras contas AWS.
+    - Os hosts dedicados são uma opção quando você precisa de um alto nível de isolamento para atender a requisitos específicos de conformidade ou segurança.
+    - Eles podem ser caros, pois você paga pela capacidade do host dedicado, independentemente de quantas instâncias EC2 são executadas nele.
+  
     
-      > *Aplica-se quando deseja vincular licenças de software, como Windows Server, SQL Server e Suse Linux Enterprise Server. Podemos citar exemplos de casos de aplicação onde os requisitos de conformidade são mais rigorosos(PCI DSS, HIPAA...) garantindo maior segurança e reduzindo riscos de vazamento de dados,  Cargas de trabalho altamente sensíveis- informações confidenciais*. 
-    
-      - Um host dedicado EC2 é um servidor físico dedicado exclusivamente a uma única conta AWS.
-      - Isso significa que você tem controle total sobre o hardware subjacente e não compartilha recursos físicos com outras contas AWS.
-      - Os hosts dedicados são uma opção quando você precisa de um alto nível de isolamento para atender a requisitos específicos de conformidade ou segurança.
-      - Eles podem ser caros, pois você paga pela capacidade do host dedicado, independentemente de quantas instâncias EC2 são executadas nele.
-    
-      
-    
-    - **Instância Dedicada**: Hardware dedicado a sua empresa, pode ser  compartilhado com outras instâncias na mesma conta, não tem controle sobre o posicionamento da instância(você só pode movimentar o hardware se interromper e reiniciar), comprometimento por um período de 3 anos
-    
-      * para a instância dedicada, não teremos visibilidade de soquetes, núcleos e ids dos hosts, nem afinidade entre um host e a instância, nem inserção de instância específica nem como adicionar capacidade usando uma solicitação de alocação. 
-    
-      > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.* PODE-SE TER UMA INSTANCIA DEDICADA NO SEU HOST DEDICADO.
-    
-      - Uma instância dedicada EC2 é uma instância de máquina virtual (VM) que é executada em um host dedicado.
-      - Embora a instância compartilhe o host dedicado com outras instâncias, essas instâncias pertencem à mesma conta AWS.
-      - Isso fornece um nível mais alto de isolamento em comparação com as instâncias EC2 padrão, que podem compartilhar hardware com outras contas AWS.
-      - As instâncias dedicadas EC2 são úteis quando você deseja garantir que suas VMs estejam em um ambiente mais isolado, mas não precisa de um host dedicado completo.
-      - O custo de uma instância dedicada EC2 é geralmente menor do que o de um host dedicado, pois você paga apenas pelas instâncias que utiliza.
+  
+  - **Instância Dedicada**: Hardware dedicado a sua empresa, pode ser  compartilhado com outras instâncias na mesma conta, não tem controle sobre o posicionamento da instância(você só pode movimentar o hardware se interromper e reiniciar), comprometimento por um período de 3 anos
+  
+    * para a instância dedicada, não teremos visibilidade de soquetes, núcleos e ids dos hosts, nem afinidade entre um host e a instância, nem inserção de instância específica nem como adicionar capacidade usando uma solicitação de alocação. 
+  
+    > *Aplica-se Quando se tem várias cargas de trabalho em uma única conta e deseja garantir um nível mais alto de isolamento entre essas cargas de trabalho, mas sem isolamento completo; economizar com a contratação de novo host dedicado, afinal se paga pela instância;  quando se utiliza uma carga de trabalho que exige uma grande quantidade de recursos em picos e não o tempo todo.* PODE-SE TER UMA INSTANCIA DEDICADA NO SEU HOST DEDICADO.
+  
+    - Uma instância dedicada EC2 é uma instância de máquina virtual (VM) que é executada em um host dedicado.
+    - Embora a instância compartilhe o host dedicado com outras instâncias, essas instâncias pertencem à mesma conta AWS.
+    - Isso fornece um nível mais alto de isolamento em comparação com as instâncias EC2 padrão, que podem compartilhar hardware com outras contas AWS.
+    - As instâncias dedicadas EC2 são úteis quando você deseja garantir que suas VMs estejam em um ambiente mais isolado, mas não precisa de um host dedicado completo.
+    - O custo de uma instância dedicada EC2 é geralmente menor do que o de um host dedicado, pois você paga apenas pelas instâncias que utiliza.
 
 > Possui famílias/ tipo de instancia para melhor atender casos e necessidades, exemplo: 
 > **Família A**,T,M,MAC para uso geral, servidores, homologação e repositórios de códigos. 
