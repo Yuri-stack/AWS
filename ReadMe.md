@@ -306,13 +306,23 @@ Aqui vale lembrar que é um serviço que pode ser associado ao EC2, mas que tamb
 - De Stopping ela vai para Stopped
 - Stooped -> Pending -> Running ou Terminated
 
+![Estados de uma instância](./images/13.gif)
+
 #### Posicionamento de EC2
 
 Temos 3 opções em placement group
 
 - **Cluster** - Região, AZ, monta a EC2 uma próxima a outra quase sempre no mesmo rack - melhor latência por estar no mesmo rack, alta taxa de transferência - aplica-se para Big Data e Aplicações paralelas.
+
+  ![Grupo de colaboração Cluster](./images/14.jpg)
+
 - **Spread** (Espelhar/Disseminar)  -  Região, AZ, monta a EC2 em racks diferentes - aplicações que precisam de alta disponibilidade e são críticas onde a falha de uma instância não deve afetar outras instâncias.
+
+  ![Grupo de colaboração Spread](./images/15.jpg)
+
 - **Partition** (partição) -  Região, AZ, monta a EC2 em racks diferentes - útil para cargas de trabalho grandes e distribuídas, como Hadoop, HDFs e Cassandra, pois ajuda a reduzir o risco de falhas correlacionadas.
+
+  ![Grupo de colaboração Partition](./images/16.jpg)
 
 #### Rede EC2
 
