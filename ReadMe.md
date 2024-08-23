@@ -79,7 +79,8 @@ A arquitetura que atendem os serviços da AWS estão baseados em 3 camadas:
 - **Presentation tier (apresentação)**: é a camada mais próxima do usuário, pode ser a camada de front end no caso de uma aplicação web, ou o Cloudfront no caso de um servidor de conteúdos. Para essa camada teremos o Amazon Cognito(serviço de login), o Cloudfront, Aws Amplify(ferramenta para front-end) e Route 53.
 - **Logic Tier (lógica)**: é a camada de regras de negócio e/ou crud por exemplo, é a segunda camada após a mais próxima do usuário. como um bucket do S3 ou o backend de uma aplicação web. Para essa aplicação temos como exemplo os serviços de AWS Lambda, Amazon e Api Gateway
 - **Data Tier(Dados):** é a camada mais distante do usuário, geralmente pode ser um banco de dados onde o que foi processado pelo backend será armazenado.
-- ![Arquitetura AWS](./images/02.png)
+
+![Arquitetura AWS](./images/02.png)
 
 ## Responsabilidade compartilhada
 
@@ -165,6 +166,8 @@ O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua
 - Monitorar as atividades em sua conta
 - integração com diversos serviços
 
+![IAM](./images/04.JPG)
+
 **Primeiro autentica - depois autoriza**
 
 > **Usuários** - pessoa ou serviço, com credenciais permanentes. Use o Least Privilege
@@ -191,6 +194,8 @@ O Iam é o serviço que permite gerencias usuários e grupos de usuários da sua
 Serviços computacionais em nuvem, diz respeito a locação de máquinas/ servidores, onde podemos ter controle total de sistema operacional, versão, atualizações de Sistemas e outras aplicações ou ainda podemos apenas locar o espaço que vai ser hospedagem para aplicações, transferindo preocupações com o hardware e até mesmo podemos transferir as preocupações com atualizações de sistemas para a AWS, focando assim, na aplicação final. Abaixo vamos ver alguns serviços considerados serviços de computação:
 
 ### EC2
+
+
 
 - permite criar instancias computacionais, que podem ser comparadas com um computador virtual onde definiremos as configurações de hardware e vamos ser responsáveis pelo sistema operacional e toda a estrutura computacional, ficando a AWS responsável pela parte física. (**IaaS**) | `aplicação`: quando se quer ter mais autonomia sobre o servidor ** principal produto
 
