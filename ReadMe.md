@@ -297,21 +297,21 @@ Temos 3 opções em placement group
 
   ![Grupo de colaboração Partition](./images/16.jpg)
 
-#### Rede EC2
+#### Redes - Comunicação entre EC2
 
 | Rede                                      |                          Descrição                           | Imagem                                                       |
 | ----------------------------------------- | :----------------------------------------------------------: | ------------------------------------------------------------ |
 | **ENI**                                   | Elastic Network Interface - Podemos conectar a várias subnets da mesma AZ(zona de disponibilidade), mas não consigo conectar em uma subnet de outra AZ. Possui IP privado e um público opcional. É um dispositivo de rede virtual que fornece uma interface de rede para a EC2. Todo ENI utiliza ENA para oferecer um desempenho superior | ![ENI](./images/17.png)                                      |
 | **ENA**                                   | Elastic Network Adapter - Mais rápida que a ENI atende alguns tipos de instâncias ( tem ip privada e público opcional) | ![ENA](./images/18.png)                                      |
 | **EFA**                                   | Elastic Fabric Adapter - Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional). Principal característica é que fornece suporte a vários protocolos de comunicação como o RDMA(remote direct memory access), que permite acesso direto a memória de outras instâncias. | ![EFA](./images/19.png)                                      |
-| **NAT **                                  | Network Adress Translate - Tradução de Endereços de Rede, é uma técnica de rede que permite múltiplos dispositivos em uma rede privada compartilhem um único endereço IP público para acessar a internet. Uso para quando o número de ips públicos é limitado, oculta o ip privado do equipamento, | ![NAT](./images/20.png)                                      |
+| **NAT**                                   | Network Adress Translate - Tradução de Endereços de Rede, é uma técnica de rede que permite múltiplos dispositivos em uma rede privada compartilhem um único endereço IP público para acessar a internet. Uso para quando o número de ips públicos é limitado, oculta o ip privado do equipamento, | ![NAT](./images/20.png)                                      |
 | **IP Elástico**                           | É uma configuração de IP que permite reiniciar a máquina e não perder o IP público. Permite também migrar esse IP para outra máquina(OBS: ao terminar uma instância deve-se apagar o IP público caso não vá reutilizar para não gerar custos.) Oferece instabilidade, acesso remoto consistente. Ajuda em Load Balancers, para ajudar a distribuir o tráfego entre várias instâncias. | <img src="./images/21.gif" alt="Ip Elástico" style="zoom: 100%;" /> |
 | **Subnet pública**                        | Tem saída para internet com o IGW internet Gateware. A EC2 localizada em uma subnet pública pode se conectar com a internet sem necessidade de um dispositivo NAT. Utilizada para servidores Web, Balanceador de carga e serviços que devem ser acessados via Web. | ![Subnet Pública](./images/22.gif)                           |
 | **Subnet privada**                        | Não tem saída para internet diretamente, mas pode ter esse acesso através de um Bastion Host. | ![Subnet Privada](./images/23.gif)                           |
 | **Bastion Host ou Host Jump ou Jump Box** | Utilizado como ponte de conexão instâncias de subnet privada. Essa instância é criada com Ip Público, configuramos a instância de IP Privado VPC(Virtual private Cloud), para ter acesso SSH e ou RDP ao Bastion Host. Por último configura-se o Bastion Host para um NAT Gateware, com as regras de acesso e fazendo uso apenas do consumo da internet sem se tornar disponível na internet (para as instâncias de Ip Privado) | ![Bastion Host](./images/24.png)                             |
 | **Internet Gateway**                      | É bidirecional, permite o acesso da máquina a internet, mas também permite terceiros acessarem essa máquina a partir da internet. | ![Internet Gateway](./images/25.png)                         |
 
-#### Características de uma VPC
+#### Características de uma VPC (Virtual Private Cloud)
 
 - podem ter subnets 
 - roteamento -> tabelas de roteamento
@@ -325,7 +325,7 @@ Gateways e Endpoints
 
 Conectividade:
 
-- **VPN Gateway** - permite conexão segura entre sua VPN e seu data center ou rede corporativa
+- **VPN(rede privada na internet) Gateway** - permite conexão segura entre sua VPN e seu data center ou rede corporativa, cria um túnel criptografado entre duas redes, o que permite estender uma rede local para a nuvem.
 - **Direct Connect** - proporciona uma conexão de rede dedicada entre sua infraestrutura local e a AWS
 
 Benefícios:
@@ -334,6 +334,8 @@ Benefícios:
 - controle - pode-se incluir seleção de IPs, criar subnets configurar tabela de roteamento e outras configurações
 - escalabilidade - pode-se ajustar o tamanho e a configuração da VPN
 - segurança - regras de segurança granular permitem proteger suas instâncias.
+
+![VPC e VPN](./images/26.png)
 
 ## Armazenamentos:
 
