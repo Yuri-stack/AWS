@@ -26,42 +26,15 @@ Temos aqui alguns serviços tais como:
 
 ### zonas de disponibilidade e regiões (outubro de 2023)
 
-| Localização                            | Quant. de zonas | Região         |
-| -------------------------------------- | --------------- | -------------- |
-| Africa (Cape Town)                     | 2               | af-south-1     |
-| Hong Kong                              | 2               | ap-east-1      |
-| Tóquio                                 | 2               | ap-northeast-1 |
-| Asia Pacific (Seoul)                   | 2               | ap-northeast-2 |
-| Asia Pacific (Osaka)                   | 2               | ap-northeast-3 |
-| Mumbai                                 | 2               | ap-south-1     |
-| Ásia-Pacífico (Haiderabade)            | 1               | ap-south-2     |
-| Singapura                              | 2               | ap-southeast-1 |
-| Sydney                                 | 2               | ap-southeast-2 |
-| Ásia-Pacífico (Jacarta)                | 1               | ap-southeast-3 |
-| Ásia-Pacífico (Melbourne)              | 1               | ap-southeast-4 |
-| Canada (Central)                       | 4               | ca-central-1   |
-| Europe (Frankfurt)                     | 2               | eu-central-1   |
-| Europa (Zurique)                       | 1               | eu-central-2   |
-| Estolcomo                              | 2               | eu-north-1     |
-| Europa (Espanha)                       | 1               | eu-south-2     |
-| Irlanda                                | 2               | eu-west-1      |
-| Londres                                | 2               | eu-west-2      |
-| Paris                                  | 2               | eu-west-3      |
-| Oriente Médio (Emirados Árabes Unidos) | 1               | me-central-1   |
-| Oriente Médio (Bahrein)                | 2               | me-south-1     |
-| **São Paulo**                          | 2               | sa-east-1      |
-| Norte da Virgínia                      | 6               | us-east-1      |
-| Ohio                                   | 3               | us-east-2      |
-| AWS GovCloud (Leste dos EUA)           | 1               | us-gov-east-1  |
-| AWS GovCloud (Oeste dos EUA)           | 1               | us-gov-west-1  |
-| Norte Califórnia                       | 3               | us-west-1      |
-| Oregon                                 | 4               | us-west-2      |
+Ver site: https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.Regions
 
 - **Zona de disponibilidade estão distintos a quilômetros de distância uma das outras**, conectadas com alta velocidade, com segurança local, refrigeração e poder ser um ou mais data centers. Distância entre as zonas de até 100km. Estes são conectados para ter baixa latência, auto rendimento e redundância. Essa disposição das zonas está relacionado ao conceito e Escalabilidade.
 
 Ao contratar um serviço AWs a ideia será sempre ver qual a região mais próximo do seu usuário. Não importando muito qual a zona de disponibilidade exatamente esta seu serviço, o foco é a região estar o mais próximo possível. Dependendo de como é configurado a sua instancia quando uma zona estiver com problemas ou indisponível a outra irá assumir o serviço. Esse modelo garantiu a AWS o título de **líder do IaaS - infraestrutura como serviço**.
 
-- **Edge Locations** ou **PoPs (pontos de presença) ou zonas locais - são utilizados como cache de dados** é uma infraestrutura de servidores, localizado próximo de uma zona de disponibilidade, armazena dados mais solicitados no cache para melhorar latência de uma requisição de consulta. Estão em pontos estratégicos sem cobertura pela AWS. Exemplo:  **Amazon Cloud Front**, que armazena o cache do seu site estático, por exemplo. Outro serviço **AWS Lightsail** ou **AWS ElastiCache** (banco de dados em memória)
+- **Edge Locations** ou **PoPs (pontos de presença) ou zonas locais - são utilizados como cache de dados** é uma infraestrutura de servidores, localizado próximo de uma zona de disponibilidade, armazena dados mais solicitados no cache para melhorar latência de uma requisição de consulta. Estão em pontos estratégicos sem cobertura pela AWS. Exemplo:  **Amazon Cloud Front**, que armazena o cache do seu site estático, por exemplo. Outro serviço **AWS Lightsail** ou **AWS ElastiCache** (banco de dados em memória).
+
+  Site: https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.LocalZones
 
 ## Seis vantagens do uso da AWS
 
@@ -330,8 +303,8 @@ Temos 3 opções em placement group
 | ----------------------------------------- | :----------------------------------------------------------: | ----------------------- |
 | **ENI (Elastic Network Interface)**       | Podemos conectar a várias subnets da mesma AZ(zona de disponibilidade), mas não consigo conectar em uma subnet de outra AZ. Possui IP privado e um público opcional. É um dispositivo de rede virtual que fornece uma interface de rede para a EC2. Todo ENI utiliza ENA para oferecer um desempenho superior | ![ENI](./images/17.png) |
 | **ENA (Elastic Network Adapter)**         | Mais rápida que a ENI atende alguns tipos de instâncias ( tem ip privada e público opcional) | ![ENA](./images/18.png) |
-| **EFA (Elastic Fabric Adapter)**          | Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional) |                         |
-| **NAT (Network Adress Translate)**        | Ajuda máquina ter solicitação pelo IP público, máscara o IP público para um privado permitindo receber respostas da internet - precisa habilitar para conseguir consumir da internet |                         |
+| **EFA (Elastic Fabric Adapter)**          | Utilizada para altar velocidades como Machine Learning - disponível para alguns tipos de instâncias (tem ip privado e público opcional). Principal característica é que fornece suporte a vários protocolos de comunicação como o RDMA(remote direct memory access), que permite acesso direto a memória de outras instâncias. | ![EFA](./images/19.png) |
+| **NAT (Network Adress Translate)**        | Tradução de Endereços de Rede, é uma técnica de rede que permite múltiplos dispositivos em uma rede privada compartilhem um único endereço IP público para acessar a internet. Uso para quando o número de ips públicos é limitado, oculta o ip privado do equipamento, | ![NAT](./images/20.png) |
 | **IP Elástico**                           | É uma configuração de IP que permite reiniciar a máquina e não perder o IP público. Permite também migrar esse IP para outra máquina(OBS: ao terminar uma instância deve-se apagar o IP público caso não vá reutilizar para não gerar custos.) |                         |
 | **Subnet pública**                        |      Tem saída para internet com o IGW internet Gatware      |                         |
 | **Subnet privada**                        | Não tem saída para internet diretamente, mas pode ter esse acesso através de um Bastion Host. |                         |
